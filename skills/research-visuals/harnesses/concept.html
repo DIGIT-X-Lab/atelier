@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ATELIER · concept</title>
+<!-- theme.css (from make_theme.mjs) supplies the chosen fonts + palette. No baked font. -->
+<link rel="stylesheet" href="theme.css" onerror="">
+<style>
+  :root { --primary:#C85A20; --coral-2:#D97B4A; --greige:#8A7E74; --tawny:#9A7352;
+          --ink:#3D342E; --ink-muted:#5A4D43; --ink-faint:#8A8078; --paper:#FFFFFF; --hairline:#E0E0E0;
+          --font-display:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+          --font-body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+          --tint-1:#FFF5EF; --tint-3:#F5F3F1; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--paper); display:flex; justify-content:center; align-items:center; min-height:100vh; font-family:var(--font-body); }
+  canvas { display:block; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script type="module">
+  // Self-contained Canvas concept harness — coral/greige house system, DM Sans + Cormorant.
+  // This starter draws a labelled pipeline (input → model → output) on the house grid; the skill
+  // composes the actual concept (architecture/CONSORT/graphical abstract) by extending draw().
+  let theme = { palette:{ primary:"#C85A20", neutral:"#8A7E74", accents:["#9A7352"], ink:"#3D342E",
+                inkMuted:"#5A4D43", inkFaint:"#8A8078", paper:"#FFFFFF", tints:["#FFF5EF","#F9F5F0","#F5F3F1"] } };
+  try { theme = await (await fetch("theme.json")).json(); } catch {}
+  const P = theme.palette;
+  // Canvas ctx.font needs LITERAL family names — CSS variables are not valid here.
+  // Fonts come from the locked theme (user-chosen). Fallback is the system UI font, never a baked font.
+  const SYS = "system-ui, -apple-system, sans-serif";
+  const DISPLAY = `'${(theme.fonts && theme.fonts.display) || "system-ui"}', ${SYS}`;
+  const BODY = `'${(theme.fonts && theme.fonts.body) || "system-ui"}', ${SYS}`;
+
+  const C = document.getElementById("c"), ctx = C.getContext("2d");
+  const W = 1160, Hh = 520, DPR = 2;
+  C.width = W * DPR; C.height = Hh * DPR; C.style.width = W + "px"; C.style.height = Hh + "px"; ctx.scale(DPR, DPR);
+
+  const stages = [
+    { t: "Input", s: "PET/CT, MRI", c: P.primary, bg: P.tints[0], icon: "scan" },
+    { t: "Model", s: "DINOv2 encoder", c: P.neutral, bg: P.tints[2], icon: "brain" },
+    { t: "Output", s: "OOD score · map", c: P.accents[0] || P.primary, bg: P.tints[1], icon: "chart-line-up" },
+  ];
+
+  // Phosphor icons on canvas: load the SVG (bundled locally, CDN fallback), recolor it to the
+  // theme, and draw via a same-origin data-URL Image (no canvas taint → PNG export stays clean).
+  const _iconCache = new Map();
+  async function fetchIcon(name) {
+    try { const r = await fetch(`../assets/icons/${name}.svg`); if (r.ok) return await r.text(); } catch {}
+    try { return await (await fetch(`https://unpkg.com/@phosphor-icons/core@2.1.1/assets/regular/${name}.svg`)).text(); } catch {}
+    return null;
+  }
+  async function loadIcon(name, color) {
+    const key = name + color;
+    if (_iconCache.has(key)) return _iconCache.get(key);
+    let svg = await fetchIcon(name);
+    if (!svg) { _iconCache.set(key, null); return null; }
+    svg = svg.includes("currentColor")
+      ? svg.replaceAll("currentColor", color)
+      : svg.replace("<svg", `<svg fill="${color}"`);
+    const img = new Image();
+    const p = new Promise((res) => { img.onload = () => res(img); img.onerror = () => res(null); });
+    img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+    _iconCache.set(key, p); return p;
+  }
+
+  function roundRect(x, y, w, h, r) { ctx.beginPath(); ctx.roundRect(x, y, w, h, r); }
+  let icons = [];
+  function draw() {
+    ctx.clearRect(0, 0, W, Hh);
+    // title
+    ctx.fillStyle = P.ink; ctx.font = `500 38px ${DISPLAY}`; ctx.textBaseline = "alphabetic";
+    ctx.fillText("Architecture", 64, 84);
+    ctx.fillStyle = P.inkFaint; ctx.font = `400 15px ${BODY}`;
+    ctx.fillText("how the pipeline fits together", 64, 110);
+
+    const cardW = 280, cardH = 150, gap = 100, y = 220;
+    const totalW = stages.length * cardW + (stages.length - 1) * gap;
+    let x = (W - totalW) / 2;
+    stages.forEach((st, i) => {
+      // connector (drawn first, behind)
+      if (i > 0) {
+        const px = x - gap, py = y + cardH / 2;
+        ctx.strokeStyle = P.inkFaint; ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.moveTo(px, py); ctx.lineTo(x - 10, py); ctx.stroke();
+        ctx.fillStyle = P.inkFaint; ctx.beginPath();
+        ctx.moveTo(x - 2, py); ctx.lineTo(x - 12, py - 5); ctx.lineTo(x - 12, py + 5); ctx.fill();
+      }
+      // card
+      ctx.fillStyle = st.bg; roundRect(x, y, cardW, cardH, 16); ctx.fill();
+      ctx.strokeStyle = st.c; ctx.lineWidth = 2; roundRect(x, y, cardW, cardH, 16); ctx.stroke();
+      // Phosphor icon (falls back to an accent dot until/if the icon loads)
+      if (icons[i]) ctx.drawImage(icons[i], x + 22, y + 22, 30, 30);
+      else { ctx.fillStyle = st.c; ctx.beginPath(); ctx.arc(x + 30, y + 36, 7, 0, 2 * Math.PI); ctx.fill(); }
+      // labels
+      ctx.fillStyle = P.ink; ctx.font = `600 22px ${DISPLAY}`;
+      ctx.fillText(st.t, x + 64, y + 44);
+      ctx.fillStyle = P.inkMuted; ctx.font = `400 15px ${BODY}`;
+      ctx.fillText(st.s, x + 24, y + 90);
+      x += cardW + gap;
+    });
+    // footer / provenance
+    ctx.fillStyle = P.inkFaint; ctx.font = `400 12px ${BODY}`;
+    ctx.fillText(`theme: ${theme.name || "house"}`, 64, Hh - 32);
+  }
+  // Cormorant/DM load after first paint, and icons load async — redraw when each is ready.
+  draw();
+  if (document.fonts) document.fonts.ready.then(draw);
+  Promise.all(stages.map((st) => loadIcon(st.icon, st.c))).then((imgs) => { icons = imgs; draw(); });
+</script>
+</body>
+</html>

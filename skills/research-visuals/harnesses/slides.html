@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ATELIER · slides</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<!-- theme.css (from make_theme.mjs) supplies the chosen fonts + palette. No baked font. -->
+<link rel="stylesheet" href="theme.css" onerror="">
+<style>
+  :root { --primary:#C85A20; --ink:#3D342E; --ink-muted:#5A4D43; --ink-faint:#8A8078; --paper:#FFFFFF;
+          --tint-1:#FFF5EF; --font-display:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+          --font-body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
+  .reveal { font-family:var(--font-body); color:var(--ink); }
+  .reveal .slides { text-align:left; }
+  .reveal section { padding:0 4%; }
+  .reveal h1,.reveal h2,.reveal h3 { font-family:var(--font-display); font-weight:500; color:var(--ink); letter-spacing:-.01em; }
+  .reveal h1 { font-size:3.0em; line-height:1.05; }
+  .reveal h2 { font-size:2.0em; }
+  .reveal .kicker { font-family:var(--font-body); font-size:.42em; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-faint); }
+  .reveal p,.reveal li { color:var(--ink-muted); }
+  .reveal em { color:var(--primary); font-style:normal; }
+  .reveal .rule { width:64px; height:3px; background:var(--primary); margin:.4em 0 .8em; border:0; }
+  .reveal .cards { display:flex; gap:24px; margin-top:.6em; }
+  .reveal .card { flex:1; background:var(--tint-1); border-left:3px solid var(--primary); border-radius:10px; padding:.6em .8em; }
+  .reveal .card h3 { font-size:1.0em; margin:0 0 .2em; }
+  .reveal .card p { font-size:.5em; margin:0; }
+  html.reveal-bg, .reveal-viewport { background:var(--paper); }
+</style>
+</head>
+<body>
+<div class="reveal"><div class="slides">
+  <section>
+    <div class="kicker">DIGIT-X · research</div>
+    <h1>Title of the deck</h1>
+    <hr class="rule">
+    <p>One-line thesis in the house voice — <em>quietly confident, no clutter</em>.</p>
+  </section>
+  <section>
+    <div class="kicker">the problem</div>
+    <h2>What's broken today</h2>
+    <hr class="rule">
+    <div class="cards">
+      <div class="card"><h3>Fragmented</h3><p>Data lives in silos; nothing connects.</p></div>
+      <div class="card"><h3>Manual</h3><p>Hours of hand-curation per study.</p></div>
+      <div class="card"><h3>Opaque</h3><p>No provenance, no reproducibility.</p></div>
+    </div>
+  </section>
+  <section>
+    <div class="kicker">the approach</div>
+    <h2>Our move</h2>
+    <hr class="rule">
+    <p>Replace a figure or diagram here — drop in a <em>concept</em> or <em>figure</em> artifact;
+    it inherits the same locked theme.</p>
+  </section>
+</div></div>
+<script type="module">
+  import Reveal from "https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.esm.js";
+  new Reveal({ hash:true, transition:"fade", controls:true, progress:true, slideNumber:"c/t" }).initialize();
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "meta": {
+    "source": "Sanzo Wada — A Dictionary of Color Combinations (Seigensha). Curated subset, NOT the full 348; expandable.",
+    "note": "Each combination is 2–4 harmonised hues. `seed` marks the house coral/greige default. The chosen combo sets a project's primary + accents; house neutrals/ink/paper stay constant (see house-style.md).",
+    "usage": "render_swatches.html reads this file and presents these as selectable swatch cards."
+  },
+  "combinations": [
+    { "id": "house-coral-greige", "name": "House — Coral & Greige", "seed": true, "mood": "warm, editorial, restrained", "colors": ["#C85A20", "#9A7352", "#8A7E74", "#3D342E"] },
+    { "id": "sw-072", "name": "Terracotta & Sage", "mood": "earthy, calm", "colors": ["#B5502F", "#7E8C6A", "#D8C7A8", "#3A352C"] },
+    { "id": "sw-118", "name": "Burnt Sienna & Teal", "mood": "confident, clinical-warm", "colors": ["#C2562A", "#2E7E78", "#E3B98A", "#2C2A28"] },
+    { "id": "sw-045", "name": "Ochre & Slate", "mood": "scholarly", "colors": ["#C68A33", "#4A5A6A", "#9AA7A0", "#262524"] },
+    { "id": "sw-203", "name": "Coral & Indigo", "mood": "bold, modern", "colors": ["#D2603A", "#2B3A6B", "#E7C9A6", "#1F1E1D"] },
+    { "id": "sw-156", "name": "Rust & Olive", "mood": "vintage, grounded", "colors": ["#A8472A", "#6E6A35", "#CDB892", "#33302A"] },
+    { "id": "sw-088", "name": "Persimmon & Stone", "mood": "lively neutral", "colors": ["#D86A33", "#8C8378", "#C7BBA6", "#332E2A"] },
+    { "id": "sw-261", "name": "Brick & Forest", "mood": "deep, serious", "colors": ["#9C3F2A", "#33503C", "#C9A87E", "#221F1C"] },
+    { "id": "sw-134", "name": "Amber & Plum", "mood": "rich, expressive", "colors": ["#C77A2E", "#6A3550", "#D8C2A0", "#2A2622"] },
+    { "id": "sw-019", "name": "Clay & Dusty Blue", "mood": "soft, approachable", "colors": ["#BE6B45", "#6E8AA0", "#E0CDB6", "#2E2A26"] },
+    { "id": "sw-177", "name": "Marigold & Charcoal", "mood": "high-contrast minimal", "colors": ["#D49A2E", "#3A3633", "#B7AE9E", "#1C1B1A"] },
+    { "id": "sw-242", "name": "Salmon & Pine", "mood": "fresh, optimistic", "colors": ["#D77A5C", "#2F6B4F", "#EAD3BB", "#2B2825"] },
+    { "id": "sw-101", "name": "Copper & Steel", "mood": "technical, precise", "colors": ["#B0673A", "#5A6670", "#C4BAA8", "#242322"] },
+    { "id": "sw-058", "name": "Saffron & Aubergine", "mood": "warm-dramatic", "colors": ["#D08A2A", "#4A2E40", "#D9C4A2", "#231F1D"] },
+    { "id": "sw-289", "name": "Cinnamon & Teal-Grey", "mood": "muted, sophisticated", "colors": ["#A85C38", "#5E7E7A", "#C8B79C", "#2A2724"] },
+    { "id": "sw-163", "name": "Apricot & Slate-Blue", "mood": "gentle, airy", "colors": ["#E0A06A", "#566B82", "#EEDCC4", "#322D29"] }
+  ]
+}

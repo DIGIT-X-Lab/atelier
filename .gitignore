@@ -1,0 +1,5 @@
+# ATELIER runtime artifacts (generated per project, never committed in the skill)
+.atelier-selection.json
+# Per-project locked theme lives in the user's project, not here:
+skills/*/harnesses/theme.json
+skills/*/harnesses/theme.css

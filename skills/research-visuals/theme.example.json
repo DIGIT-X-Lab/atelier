@@ -1,0 +1,22 @@
+{
+  "name": "lion",
+  "source": "Sanzo Wada — A Dictionary of Color Combinations (seed: house coral/greige)",
+  "palette": {
+    "primary": "#C85A20",
+    "primaryRamp": ["#C85A20", "#D97B4A", "#EBA87A"],
+    "neutral": "#8A7E74",
+    "neutralRamp": ["#6B5B4F", "#8A7E74", "#A49890"],
+    "accents": ["#9A7352", "#508C6E", "#2B5C8A"],
+    "ink": "#3D342E",
+    "inkMuted": "#5A4D43",
+    "inkFaint": "#8A8078",
+    "hairline": "#E0E0E0",
+    "paper": "#FFFFFF",
+    "tints": ["#FFF5EF", "#F9F5F0", "#F5F3F1", "#F3F0ED"]
+  },
+  "target": "preprint",
+  "_fontsNote": "Fonts have NO default — these are an EXAMPLE of a user choice, not a preset. The skill always asks.",
+  "fonts": { "figures": "Space Grotesk", "display": "Space Grotesk", "body": "Public Sans" },
+  "spacing": [4, 8, 16, 24, 40, 64],
+  "export": { "format": ["svg", "pdf"], "dpi": 300, "widthIn": { "single": 3.5, "double": 7.2 } }
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ATELIER · figure</title>
+<!-- theme.css (from make_theme.mjs) supplies the chosen fonts (@import) + palette vars. No baked font. -->
+<link rel="stylesheet" href="theme.css" onerror="">
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+<style>
+  :root {
+    --primary:#C85A20; --accent-1:#508C6E; --accent-2:#2B5C8A; --accent-3:#9A7352;
+    --ink:#3D342E; --ink-muted:#5A4D43; --ink-faint:#8A8078; --hairline:#E0E0E0; --paper:#FFFFFF;
+    --font-figures:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#FAF9F8; font-family:var(--font-figures); color:var(--ink);
+         min-height:100vh; display:flex; flex-direction:column; align-items:center; padding:48px 24px 96px; }
+  .stage { background:var(--paper); border-radius:12px; box-shadow:0 8px 40px rgba(61,52,46,.08); padding:8px; }
+  svg { display:block; }
+  /* House figure primitives — recipes reuse these classes. */
+  .ax-domain { stroke:var(--hairline); stroke-width:1; }
+  .ax-tick line { stroke:var(--hairline); stroke-width:1; }
+  .ax-tick text { fill:var(--ink-faint); font-size:12px; font-variant-numeric:tabular-nums; }
+  .ax-title { fill:var(--ink-muted); font-size:13px; font-weight:500; }
+  .fig-title { fill:var(--ink); font-size:15px; font-weight:600; }
+  .panel-label { fill:var(--ink); font-size:14px; font-weight:700; }
+  .annot { fill:var(--ink-faint); font-size:11px; }
+  .toolbar { margin-top:20px; display:flex; gap:10px; }
+  button { font-family:var(--font-figures); font-size:13px; font-weight:600; border:1px solid var(--hairline);
+           background:var(--paper); color:var(--ink); padding:9px 16px; border-radius:8px; cursor:pointer; }
+  button:hover { border-color:var(--ink); }
+</style>
+</head>
+<body>
+<div class="stage"><svg id="fig" width="720" height="480"></svg></div>
+<div class="toolbar"><button id="dl">Download SVG</button></div>
+<script type="module">
+  // Resolve theme: prefer project theme.json, else house defaults already in CSS.
+  let theme = { palette:{ primary:"#C85A20", accents:["#508C6E","#2B5C8A","#9A7352"], ink:"#3D342E",
+                inkMuted:"#5A4D43", inkFaint:"#8A8078", hairline:"#E0E0E0", paper:"#FFFFFF" },
+                fonts:{ figures:"Inter" } };
+  try { theme = await (await fetch("theme.json")).json(); } catch {}
+
+  // Which recipe + data? ?recipe=bland-altman&data=foo.json  (defaults to a built-in demo)
+  const params = new URLSearchParams(location.search);
+  const recipeName = params.get("recipe") || "bland-altman";
+  const svg = d3.select("#fig");
+
+  let data = null;
+  if (params.get("data")) { try { data = await (await fetch(params.get("data"))).json(); } catch {} }
+
+  try {
+    const recipe = await import(`../recipes/${recipeName}.js`);
+    recipe.render({ svg, d3, theme, data });
+  } catch (e) {
+    svg.append("text").attr("x", 24).attr("y", 40).attr("class", "annot")
+       .text(`Recipe "${recipeName}" not found or failed: ${e.message}`);
+  }
+
+  // Export the live SVG verbatim (vector, fonts referenced).
+  document.getElementById("dl").onclick = () => {
+    const src = new XMLSerializer().serializeToString(svg.node());
+    const blob = new Blob([`<?xml version="1.0" encoding="UTF-8"?>\n` + src], { type: "image/svg+xml" });
+    const a = document.createElement("a"); a.href = URL.createObjectURL(blob);
+    a.download = `${recipeName}.svg`; a.click();
+  };
+</script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+{
+  "meta": {
+    "note": "target -> permitted fonts + physical sizing. The skill ALWAYS asks the user to choose; there is NO default font. Only fonts permitted for the chosen target may be offered. If the user picks a font the target forbids, offer the nearest permitted substitute and FLAG it.",
+    "doNotDefaultTo": ["Inter", "DM Sans", "Cormorant Garamond"],
+    "substitutes": {
+      "Space Grotesk": "Arial",
+      "Hanken Grotesk": "Arial",
+      "Public Sans": "Arial",
+      "Geist": "Arial",
+      "General Sans": "Arial"
+    },
+    "webfonts": {
+      "Space Grotesk": "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap",
+      "Hanken Grotesk": "https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap",
+      "Public Sans": "https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap",
+      "Geist": "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap",
+      "General Sans": "https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap"
+    }
+  },
+  "fontGroups": {
+    "distinctive-sans": ["Space Grotesk", "Hanken Grotesk", "Public Sans", "Geist", "General Sans"],
+    "journal-safe": ["Arial", "Helvetica", "Times New Roman", "Georgia", "Palatino Linotype"]
+  },
+  "targets": {
+    "preprint": {
+      "label": "Preprint / screen (arXiv, medRxiv, internal)",
+      "allowed": ["Space Grotesk", "Hanken Grotesk", "Public Sans", "Geist", "General Sans", "Arial", "Helvetica", "Georgia"],
+      "sizing": { "single": 3.5, "double": 7.2, "dpi": 300, "minPt": 7 }
+    },
+    "talk-slides": {
+      "label": "Talk / slide deck (screen)",
+      "allowed": ["Space Grotesk", "Hanken Grotesk", "Public Sans", "Geist", "General Sans", "Arial", "Georgia"],
+      "sizing": { "dpi": 150 }
+    },
+    "nature": {
+      "label": "Nature / NPG journals",
+      "allowed": ["Arial", "Helvetica", "Myriad Pro"],
+      "sizing": { "single": 3.5, "double": 7.2, "dpi": 300, "minPt": 5, "maxPt": 7 },
+      "note": "Sans-serif only; 5–7 pt labels at final size."
+    },
+    "cell": {
+      "label": "Cell Press",
+      "allowed": ["Arial", "Helvetica"],
+      "sizing": { "single": 3.35, "double": 6.85, "dpi": 300, "minPt": 5, "maxPt": 7 }
+    },
+    "science": {
+      "label": "Science / AAAS",
+      "allowed": ["Helvetica", "Arial"],
+      "sizing": { "single": 2.3, "double": 4.76, "triple": 7.24, "dpi": 300, "minPt": 5, "maxPt": 7 }
+    },
+    "ieee": {
+      "label": "IEEE journals",
+      "allowed": ["Times New Roman", "Arial", "Helvetica"],
+      "sizing": { "single": 3.5, "double": 7.16, "dpi": 600, "minPt": 8 }
+    },
+    "radiology-rsna": {
+      "label": "Radiology / RSNA",
+      "allowed": ["Arial", "Helvetica"],
+      "sizing": { "single": 3.5, "double": 7.0, "dpi": 300, "minPt": 6 }
+    },
+    "nih-grant": {
+      "label": "NIH grant",
+      "allowed": ["Arial", "Georgia", "Helvetica", "Palatino Linotype"],
+      "sizing": { "minPt": 11, "dpi": 300 },
+      "note": "Body text ≥ 11 pt; figure text legible at print size."
+    },
+    "dfg-grant": {
+      "label": "DFG / German grant",
+      "allowed": ["Arial", "Helvetica", "Times New Roman"],
+      "sizing": { "minPt": 10, "dpi": 300 }
+    },
+    "erc-grant": {
+      "label": "ERC grant",
+      "allowed": ["Arial", "Helvetica", "Times New Roman", "Times"],
+      "sizing": { "minPt": 11, "dpi": 300 }
+    }
+  }
+}

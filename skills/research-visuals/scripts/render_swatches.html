@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ATELIER · Choose a palette</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#3D342E; --ink-muted:#5A4D43; --ink-faint:#8A8078; --paper:#FFFFFF; --hairline:#E0E0E0;
+          --ui:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--paper); color:var(--ink); font-family:var(--ui);
+         padding:64px clamp(24px,6vw,96px) 120px; line-height:1.5; }
+  header { max-width:760px; margin:0 auto 56px; }
+  .kicker { font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:16px; }
+  h1 { font-family:'Space Grotesk',var(--ui); font-weight:600; font-size:40px; line-height:1.1; margin-bottom:16px; letter-spacing:-.01em; }
+  p.lede { font-size:16px; color:var(--ink-muted); max-width:60ch; }
+  .grid { max-width:1180px; margin:0 auto; display:grid; gap:24px;
+          grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); }
+  .card { border:1px solid var(--hairline); border-radius:14px; overflow:hidden; cursor:pointer;
+          background:var(--paper); transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease; }
+  .card:hover { transform:translateY(-3px); box-shadow:0 12px 30px rgba(61,52,46,.10); }
+  .card.sel { border-color:var(--ink); box-shadow:0 0 0 2px var(--ink); }
+  .swatch { display:flex; height:128px; }
+  .swatch span { flex:1; }
+  .meta { padding:16px 18px 18px; }
+  .name { font-size:15px; font-weight:600; display:flex; align-items:center; gap:8px; }
+  .seedtag { font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--paper);
+             background:var(--ink); padding:2px 7px; border-radius:99px; }
+  .mood { font-size:13px; color:var(--ink-faint); margin-top:4px; }
+  .hexes { font-size:11px; color:var(--ink-faint); margin-top:10px; font-variant-numeric:tabular-nums; letter-spacing:.02em; }
+  .bar { position:fixed; left:0; right:0; bottom:0; background:var(--ink); color:var(--paper);
+         padding:18px clamp(24px,6vw,96px); display:flex; align-items:center; gap:20px;
+         transform:translateY(110%); transition:transform .25s ease; }
+  .bar.show { transform:translateY(0); }
+  .bar b { font-weight:600; }
+  .bar code { background:rgba(255,255,255,.14); padding:3px 9px; border-radius:6px; font-size:13px; }
+  .bar .cmd { margin-left:auto; font-size:13px; color:#D9CFC7; }
+  button.copy { background:var(--paper); color:var(--ink); border:0; border-radius:8px;
+                padding:8px 14px; font-family:inherit; font-size:13px; font-weight:600; cursor:pointer; }
+</style>
+</head>
+<body>
+<header>
+  <div class="kicker">ATELIER · palette</div>
+  <h1>Choose your palette</h1>
+  <p class="lede">Combinations drawn from <em>Sanzo Wada — A Dictionary of Color Combinations</em>.
+  Pick the one that feels right for this project; it locks for every figure, diagram, and slide.
+  The first card is the house coral&nbsp;&amp;&nbsp;greige.</p>
+</header>
+<div class="grid" id="grid"></div>
+<div class="bar" id="bar">
+  <b>Selected:</b> <span id="selname">—</span> <code id="selid">—</code>
+  <button class="copy" id="copy">Copy id</button>
+  <span class="cmd">Tell ATELIER: “lock <span id="selid2">—</span>”.</span>
+</div>
+<script>
+const grid = document.getElementById('grid');
+const bar = document.getElementById('bar');
+fetch('../assets/sanzo-wada.json').then(r=>r.json()).then(data=>{
+  for (const c of data.combinations) {
+    const card = document.createElement('div');
+    card.className = 'card'; card.dataset.id = c.id;
+    card.innerHTML = `
+      <div class="swatch">${c.colors.map(h=>`<span style="background:${h}"></span>`).join('')}</div>
+      <div class="meta">
+        <div class="name">${c.name} ${c.seed?'<span class="seedtag">house</span>':''}</div>
+        <div class="mood">${c.mood||''}</div>
+        <div class="hexes">${c.colors.join('  ·  ')}</div>
+      </div>`;
+    card.onclick = ()=>select(c);
+    grid.appendChild(card);
+  }
+}).catch(e=>{
+  grid.innerHTML = '<p style="color:var(--ink-muted)">Could not load palettes. Open this page via <code>atelier serve</code> (http), not file://.</p>';
+});
+let current = null;
+function select(c) {
+  current = c;
+  document.querySelectorAll('.card').forEach(el=>el.classList.toggle('sel', el.dataset.id===c.id));
+  selname.textContent = c.name; selid.textContent = c.id; selid2.textContent = c.id;
+  bar.classList.add('show');
+  localStorage.setItem('atelier.palette', c.id);
+  fetch('/api/select', {method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({kind:'palette',id:c.id})}).catch(()=>{});
+}
+document.getElementById('copy').onclick = ()=>{ if(current) navigator.clipboard.writeText(current.id); };
+</script>
+</body>
+</html>

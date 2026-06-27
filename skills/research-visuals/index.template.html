@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ATELIER · project visuals</title>
+<link rel="stylesheet" href="theme.css" onerror="">
+<style>
+  :root { --ink:#3D342E; --ink-muted:#5A4D43; --ink-faint:#8A8078; --paper:#FFFFFF; --hairline:#E0E0E0; --primary:#C85A20;
+          --font-display:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; --font-body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#FAF9F8; color:var(--ink); font-family:var(--font-body); padding:56px clamp(24px,6vw,80px) 96px; }
+  .kicker { font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:12px; }
+  h1 { font-family:var(--font-display); font-weight:600; font-size:40px; margin-bottom:8px; }
+  .lede { color:var(--ink-muted); margin-bottom:40px; }
+  .sheet { display:grid; gap:24px; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); }
+  figure { background:var(--paper); border:1px solid var(--hairline); border-radius:12px; overflow:hidden; }
+  figure iframe { width:100%; height:240px; border:0; background:var(--paper); }
+  figcaption { padding:14px 16px; font-size:13px; color:var(--ink-muted); display:flex; justify-content:space-between; }
+  figcaption b { color:var(--ink); font-weight:600; }
+</style>
+</head>
+<body>
+  <div class="kicker">ATELIER · contact sheet</div>
+  <h1 id="proj">Project visuals</h1>
+  <p class="lede">Every figure, diagram, and deck in this project at a glance — all sharing the locked theme.</p>
+  <div class="sheet" id="sheet"></div>
+<script type="module">
+  // Edit this manifest as you add artifacts (the skill keeps it in sync).
+  const ITEMS = [
+    { kind:"figure",  label:"Fig 1 · Agreement", src:"harnesses/figure.html?recipe=bland-altman" },
+    { kind:"concept", label:"Architecture",      src:"harnesses/concept.html" },
+    { kind:"slides",  label:"Deck",              src:"harnesses/slides.html" },
+  ];
+  const sheet = document.getElementById("sheet");
+  for (const it of ITEMS) {
+    const fig = document.createElement("figure");
+    fig.innerHTML = `<iframe src="${it.src}" loading="lazy"></iframe>
+      <figcaption><b>${it.label}</b><span>${it.kind}</span></figcaption>`;
+    sheet.appendChild(fig);
+  }
+  fetch("theme.json").then(r=>r.json()).then(t=>{ document.getElementById("proj").textContent = (t.name||"Project")+" · visuals"; }).catch(()=>{});
+</script>
+</body>
+</html>

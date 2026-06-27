@@ -1,0 +1,19 @@
+{
+  "name": "atelier",
+  "owner": {
+    "name": "DIGIT-X Lab",
+    "email": "RAD-Digitx@med.uni-muenchen.de"
+  },
+  "metadata": {
+    "description": "DIGIT-X lab skills collection. Research-grade visuals and lab workflows for Claude Code.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "atelier",
+      "source": "./plugins/atelier",
+      "description": "Design-assistant skills: reproducible, journal-grade figures, concept diagrams, and slide decks in the lab house style.",
+      "version": "0.1.0"
+    }
+  ]
+}
