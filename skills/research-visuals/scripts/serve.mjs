@@ -32,7 +32,16 @@ const server = createServer(async (req, res) => {
   }
   if (req.url === "/api/select" && req.method === "POST") {
     let body = ""; for await (const c of req) body += c;
-    try { await writeFile(join(ROOT, ".atelier-selection.json"), body); console.log("→ selection:", body); } catch {}
+    // Merge by kind (palette / font) so picking both doesn't clobber — accumulate into one file.
+    try {
+      const sel = JSON.parse(body);
+      const file = join(ROOT, ".atelier-selection.json");
+      let cur = {};
+      try { cur = JSON.parse(await readFile(file, "utf8")); } catch {}
+      cur[sel.kind || "value"] = sel;
+      await writeFile(file, JSON.stringify(cur, null, 2));
+      console.log("→ selection:", sel.kind, "=", sel.id || sel.font || "");
+    } catch {}
     res.writeHead(200, { "Content-Type": "application/json" }); res.end('{"ok":true}'); return;
   }
   let p = normalize(decodeURIComponent(req.url.split("?")[0])); if (p === "/") p = "/index.html";
