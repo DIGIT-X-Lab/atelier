@@ -65,6 +65,57 @@
     const a = document.createElement("a"); a.href = URL.createObjectURL(blob);
     a.download = `${recipeName}.svg`; a.click();
   };
+
+  // ── Automated craft-gate QA ─────────────────────────────────────────────────
+  // window.__qa() returns { pass, issues[] }. The render→check→fix loop runs this until clean.
+  // Uses elementsFromPoint (real hit-testing) so it catches what bounding boxes miss:
+  //   • a mark/line drawn OVER text   • a fill/line within `near` px of text (reads as strike-through)
+  //   • text overlapping text         • adjacent filled marks touching (e.g. ridges)
+  window.__qa = function (opts) {
+    const near = (opts && opts.near) || 3;     // px: closer than this = collision
+    const svgEl = document.getElementById("fig");
+    const texts = [...svgEl.querySelectorAll("text")].filter(t => t.textContent.trim());
+    const fills = [...svgEl.querySelectorAll('path[fill]:not([fill="none"]), rect[fill]:not([fill="none"])')];
+    const isMark = (el) => el && (el.tagName === "path" || el.tagName === "line" || el.tagName === "rect");
+    const ancestors = (el) => { const s = new Set(); while (el) { s.add(el); el = el.parentElement; } return s; };
+    const issues = [];
+
+    // text vs marks: sample a grid inside the text box and a ring just outside it
+    for (const t of texts) {
+      const r = t.getBoundingClientRect();
+      if (r.width === 0) continue;
+      const own = ancestors(t);
+      const hit = (x, y) => document.elementsFromPoint(x, y).find(e => isMark(e) && !own.has(e));
+      let over = null, adj = null;
+      const xs = [r.left + 1, (r.left + r.right) / 2, r.right - 1];
+      const ys = [r.top + 1, (r.top + r.bottom) / 2, r.bottom - 1];
+      for (const x of xs) for (const y of ys) { const h = hit(x, y); if (h) over = h.tagName; }
+      // ring just outside (catches the "edge butting the text" case)
+      const ring = [[r.left - near, (r.top + r.bottom) / 2], [r.right + near, (r.top + r.bottom) / 2],
+                    [(r.left + r.right) / 2, r.top - near], [(r.left + r.right) / 2, r.bottom + near]];
+      for (const [x, y] of ring) { const h = hit(x, y); if (h) adj = h.tagName; }
+      const label = t.textContent.slice(0, 24);
+      if (over) issues.push({ type: "mark-over-text", el: over, text: label });
+      else if (adj) issues.push({ type: "mark-touching-text", el: adj, text: label, within: near });
+    }
+
+    // text vs text
+    for (let i = 0; i < texts.length; i++) for (let j = i + 1; j < texts.length; j++) {
+      const a = texts[i].getBoundingClientRect(), b = texts[j].getBoundingClientRect();
+      if (!(a.right < b.left || b.right < a.left || a.bottom < b.top || b.bottom < a.top))
+        issues.push({ type: "text-over-text", a: texts[i].textContent.slice(0, 18), b: texts[j].textContent.slice(0, 18) });
+    }
+
+    // filled marks touching each other (e.g. ridges): vertical gap where they share x
+    for (let i = 0; i < fills.length; i++) for (let j = i + 1; j < fills.length; j++) {
+      const a = fills[i].getBoundingClientRect(), b = fills[j].getBoundingClientRect();
+      const xOverlap = !(a.right < b.left || b.right < a.left);
+      const yOverlap = !(a.bottom < b.top || b.bottom < a.top);
+      if (xOverlap && yOverlap) issues.push({ type: "marks-touching", i, j });
+    }
+
+    return { pass: issues.length === 0, count: issues.length, issues };
+  };
 </script>
 </body>
 </html>
