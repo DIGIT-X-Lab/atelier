@@ -1,6 +1,6 @@
 {
   "name": "atelier",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Design-assistant skills for the DIGIT-X lab: reproducible, journal-grade figures (D3, never matplotlib), concept diagrams, and slide decks in the lab house style.",
   "author": {
     "name": "DIGIT-X Lab",
