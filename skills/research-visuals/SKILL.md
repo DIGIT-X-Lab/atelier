@@ -33,8 +33,10 @@ Run everything against a project visuals folder (e.g. the manuscript's `figures/
 in `scripts/`; serve with live reload so iteration is instant.
 
 1. **Theme present?** If the project already has `theme.json`, use it silently → go to step 5.
-2. **Palette.** Tell the user you're drawing from *Sanzo Wada — A Dictionary of Color Combinations*.
-   Serve and open `scripts/render_swatches.html`; they pick a card (default seed = house coral/greige).
+2. **Palette (always — the user picks, never you).** Tell the user you're drawing from *Sanzo Wada —
+   A Dictionary of Color Combinations*. Serve and open `scripts/render_swatches.html`; **they** pick a
+   card. Do NOT assume coral/greige or any default — even if the user says "pick what's easy" or
+   "whatever," that refers to scoping, not the palette: still show the chooser and let them choose.
 3. **Fonts (always — never skip).** Open `scripts/render_fonts.html`; ask the target (preprint /
    journal / grant); they pick from the permitted set (distinctive sans + journal-safe). Never default
    a font yourself. Substitutions for forbidden picks are flagged.
@@ -43,8 +45,12 @@ in `scripts/`; serve with live reload so iteration is instant.
    fails, fix the accent assignment or add shape/texture encoding before continuing.
 5. **Pick the family & render** (see table). Copy the harness into the project, point it at the theme,
    and iterate live (`node scripts/serve.mjs --root <dir>`).
-6. **Craft gate (mandatory).** Screenshot the rendered artifact → inspect for overlap / clipping /
-   crowding / misalignment / contrast → fix → re-render. Not done until a clean screenshot passes.
+6. **Craft gate (mandatory).** Screenshot the rendered artifact **and zoom in**, then run the full
+   **collision checklist** in `assets/house-style.md` — check EVERY text element (title, subheading,
+   axis titles, tick labels, data/row labels, legend, annotations, panel labels, markers) against
+   every other element AND against fill edges / baselines / gridlines. Judge by eye on the pixels, not
+   bounding boxes — a label that *touches* a fill edge (e.g. reads as strike-through) is a collision.
+   Fix → re-render. Not done until a clean, zoomed screenshot passes every item.
 7. **Finish.** Export at the target's size/DPI (fonts embedded), draft a caption + alt-text, and keep
    the provenance footer (data hash · theme · date). Add the artifact to `index.template.html`.
 
@@ -74,6 +80,7 @@ never hard-code hues.
 - Reaching for matplotlib or a static PNG. → D3/SVG, vector.
 - Hard-coding `#C85A20` in a recipe. → read `theme.palette` / CSS vars.
 - Picking a chart before profiling the data. → profile first, then advise.
-- Declaring done without the screenshot inspection. → run the craft gate every time.
+- Declaring done without the **zoomed** screenshot + collision checklist. → run the craft gate every time.
+- Trusting bounding boxes ("they don't overlap"). → judge collisions by eye; a label touching a fill edge / baseline / gridline is a collision.
 - Defaulting a font (especially Inter/DM Sans/Cormorant). → always run the font chooser; the user picks.
 - Adding Phosphor icons by name without checking `assets/icons/` (download into it if missing).

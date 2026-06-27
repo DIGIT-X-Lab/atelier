@@ -69,12 +69,41 @@ colorblind-safety backup.
 
 ## The craft bar (every artifact must pass)
 
-1. **No collisions, ever** — measure text boxes; resolve overlap by dodging, leader lines, or
-   repositioning. Text never touches text/marks; marks never clip the frame.
+1. **No collisions, ever.** See the collision checklist below — this is the most-failed rule, check
+   it explicitly every time.
 2. **Breathing room** — generous consistent margins; spacing from the scale; baseline-grid aligned.
 3. **One focal point**; high data–ink ratio.
 4. **Typographic hierarchy** — distinct, consistent sizes/weights; ≤ 3 sizes per figure.
 5. **Restraint with color** — locked palette; ≤ 3–4 meaning hues.
 6. **Accessible** — survives deuteranopia/protanopia; text meets WCAG AA contrast.
 
-Render → screenshot → inspect against 1–6 → fix → re-render. Not done until a clean screenshot passes.
+## Collision checklist — MANDATORY, EVERY artifact
+
+The #1 recurring failure. **Zoom into the screenshot** and check EVERY text element against EVERY
+other element. A label that merely **touches** another element — including a fill edge, a gridline, an
+axis, a curve, or a marker — is a COLLISION. "Bounding boxes don't technically overlap" is NOT a pass;
+judge it **visually**, by eye, on the rendered pixels.
+
+Enumerate and verify each — none may overlap/touch/clip:
+
+- **Title** vs subheading, panel label, plot area
+- **Subheading** vs the top of the plot / first data row
+- **Axis titles** (x and y) vs tick labels, vs the frame
+- **Tick labels** vs each other (crowding on dense axes), vs axis title, vs data
+- **Data/series labels** (direct labels, ridgeline row names, bar values) vs marks, vs **fill edges
+  and baselines**, vs each other, vs adjacent rows
+- **Legend** vs data and frame (prefer direct labels — see Spacing & grid)
+- **Annotations / significance bars / n= counts** vs marks and vs each other
+- **Markers / points** vs the frame (clipping) and vs labels
+- **Panel labels** `A B C` vs title and plot
+
+Common offenders to watch: a row label whose vertical centre lands **on a baseline or fill edge**
+(reads as strike-through); tick labels colliding when the axis is dense; the top ridge/bar touching the
+subheading; long category names running into the plot.
+
+**If two elements are within a few px, treat it as a collision and fix it** — by moving, dodging,
+adding margin, leader lines, abbreviating, rotating ticks, or reducing overlap. The fix is never
+"leave it, it's close enough."
+
+Render → **zoom** screenshot → inspect against 1–6 **and run the full collision checklist** → fix →
+re-render. Not done until a clean, zoomed screenshot passes every item.
