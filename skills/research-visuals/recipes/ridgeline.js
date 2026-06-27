@@ -48,18 +48,23 @@ export function render({ svg, d3, theme, data }) {
     const peak = d3.max(dens, (p) => p[1]) || 1;
     return { ...grp, dens: dens.map((p) => [p[0], p[1] / peak]) }; // normalise to [0,1]
   });
-  const overlap = 1.2; // modest overlap — ridgeline feel without collisions
+  const overlap = 0.8; // < 1 so ridges never touch the row above (no marks-touching-marks collision)
   const rowH = (y.step() || ih / groups.length) * overlap;
 
   const area = d3.area().x((p) => x(p[0])).y0(0).y1((p) => -p[1] * rowH).curve(d3.curveBasis);
   const pretty = (s) => s.replace(/_/g, " ");
 
+  // Colour each ridge along a palette ramp (primary → first accent) by row order, so the locked
+  // palette is actually used — not a monochrome wash. Falls back to primary if no accent.
+  const rampEnd = (P.accents && P.accents[0]) || P.primary;
+  const fillFor = (i) => d3.interpolateHcl(P.primary, rampEnd)(groups.length > 1 ? i / (groups.length - 1) : 0);
+
   // draw back-to-front (top rows first) so lower ridges sit in front
-  densities.forEach((grp) => {
+  densities.forEach((grp, i) => {
     const gy = y(grp.region);
     const row = g.append("g").attr("transform", `translate(0,${gy})`);
     row.append("path").attr("d", area(grp.dens))
-      .attr("fill", P.primary).attr("fill-opacity", 0.55)
+      .attr("fill", fillFor(i)).attr("fill-opacity", 0.78)
       .attr("stroke", P.paper).attr("stroke-width", 1);
     // median tick on the baseline
     row.append("line").attr("x1", x(grp.median)).attr("x2", x(grp.median)).attr("y1", 0).attr("y2", -6)

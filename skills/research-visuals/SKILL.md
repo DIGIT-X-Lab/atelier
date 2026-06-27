@@ -45,14 +45,24 @@ in `scripts/`; serve with live reload so iteration is instant.
    fails, fix the accent assignment or add shape/texture encoding before continuing.
 5. **Pick the family & render** (see table). Copy the harness into the project, point it at the theme,
    and iterate live (`node scripts/serve.mjs --root <dir>`).
-6. **Craft gate (mandatory).** Screenshot the rendered artifact **and zoom in**, then run the full
-   **collision checklist** in `assets/house-style.md` — check EVERY text element (title, subheading,
-   axis titles, tick labels, data/row labels, legend, annotations, panel labels, markers) against
-   every other element AND against fill edges / baselines / gridlines. Judge by eye on the pixels, not
-   bounding boxes — a label that *touches* a fill edge (e.g. reads as strike-through) is a collision.
-   Fix → re-render. Not done until a clean, zoomed screenshot passes every item.
-7. **Finish.** Export at the target's size/DPI (fonts embedded), draft a caption + alt-text, and keep
-   the provenance footer (data hash · theme · date). Add the artifact to `index.template.html`.
+6. **Craft gate — AUTOMATED LOOP (mandatory, do not hand back a failing figure).** Run this loop
+   yourself until it passes; don't ask the user to spot collisions:
+   ```
+   repeat:
+     render → call window.__qa({near:3}) in the browser   (built into harnesses/figure.html)
+     if !pass: read issues[] (mark-over-text, mark-touching-text, text-over-text, marks-touching),
+               adjust the recipe (spacing, margins, overlap<1, label offset, domain) and re-render
+     also ZOOM the screenshot and eyeball it against the collision checklist in house-style.md
+   until __qa.pass === true AND the zoomed screenshot is clean.
+   ```
+   `__qa` uses real hit-testing (`elementsFromPoint`), so it catches what bounding boxes miss — a fill
+   edge butting the text (strike-through), marks over text, ridges touching. It is a backstop, not a
+   replacement for the eyeball pass. Never deliver until both pass.
+7. **Finish.** Export **both**: a self-contained **SVG** (vector = infinite resolution, the real
+   publication asset — embed a `<style>` block with the fonts so it stands alone) **and** a **high-DPI
+   PNG** (render the SVG at ≥3–4× its base size before capture; never ship a 1× screenshot). Embed
+   fonts. Draft a caption + alt-text; keep the provenance footer (data hash · theme · date). Add the
+   artifact to `index.template.html`.
 
 ## Families
 
