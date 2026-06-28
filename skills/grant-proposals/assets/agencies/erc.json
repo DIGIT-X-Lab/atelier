@@ -1,0 +1,161 @@
+{
+  "agency": "erc",
+  "label": "European Research Council (ERC) Frontier Grants",
+  "version": "ERC Work Programme 2026 (B1/B2 templates; calls opening July 2025 onward)",
+  "languages": ["en"],
+  "mechanisms": ["StG", "CoG", "AdG", "SyG"],
+  "sections": [
+    {
+      "id": "cover",
+      "title": "Cover page (B1)",
+      "purpose": "Title, synopsis, panel and keywords used for assignment; not counted in the page limit.",
+      "mustContain": [
+        "Proposal title",
+        "Short synopsis / abstract",
+        "Chosen evaluation panel",
+        "Keywords"
+      ],
+      "required": true
+    },
+    {
+      "id": "b1-part-i-synopsis",
+      "title": "Part B1 — Part I: Extended Synopsis (Step 1)",
+      "purpose": "Self-contained case for the idea — WHAT is this about — judged at Step 1.",
+      "mustContain": [
+        "State of the art and the precise unsolved gap (why it has resisted solution, why now, why you)",
+        "Central objective/hypothesis broken into 3–4 falsifiable, measurable objectives",
+        "Overall strategy at a high level",
+        "Explicit argument for why the project is ground-breaking and ambitious",
+        "What becomes possible / what understanding changes if it succeeds",
+        "Breakthrough stated in the opening paragraph, readable by a non-specialist"
+      ],
+      "required": true
+    },
+    {
+      "id": "b1-cv-track-record",
+      "title": "Part B1 — Curriculum Vitae + Track Record (Step 1)",
+      "purpose": "WHO are you — evidence of capacity to deliver frontier research at this career stage.",
+      "mustContain": [
+        "Narrative arguing 'I am the person who can do THIS project'",
+        "Best/most significant outputs (not a publication count), with the PI's role",
+        "Independence and leadership appropriate to the scheme (StG/CoG/AdG)",
+        "Diverse research outputs: prizes, invited talks, supervision, funding won, datasets/software/IP",
+        "Career breaks and field-specific norms flagged"
+      ],
+      "required": true
+    },
+    {
+      "id": "b2-part-ii-methodology",
+      "title": "Part B2 — Part II: Scientific Proposal / Methodology (Step 2)",
+      "purpose": "HOW will you do it — detailed methodology and feasibility, evaluated only if B1 passes to Step 2.",
+      "mustContain": [
+        "Detailed methodology with objective→method→expected-outcome logic; each method tied to a specific objective",
+        "Work plan / work packages and team roles",
+        "Preliminary / pilot data supporting feasibility",
+        "Risks and contingencies: likelihood, impact and a concrete results-preserving fallback per major risk",
+        "Timeline / Gantt over 60 months with milestones, deliverables and go/no-go decision gates",
+        "Infrastructure and host environment"
+      ],
+      "required": true
+    },
+    {
+      "id": "funding-id",
+      "title": "Funding ID / appendices",
+      "purpose": "Supporting administrative information; no page limit.",
+      "mustContain": [
+        "Funding ID and supporting appendices",
+        "No hidden scientific content (panels are instructed to ignore science smuggled here)"
+      ],
+      "required": true
+    },
+    {
+      "id": "budget-resources",
+      "title": "Budget / resources justification",
+      "purpose": "Justify the requested resources; sits outside the page count.",
+      "mustContain": [
+        "Resources matched to and justified by the work plan",
+        "Personnel, equipment and infrastructure aligned with the scheme budget ceiling"
+      ],
+      "required": true
+    },
+    {
+      "id": "ethics-security",
+      "title": "Ethics & security",
+      "purpose": "Declare and address ethics and security issues raised by the project.",
+      "mustContain": [
+        "Ethics self-assessment / issues table",
+        "Security-sensitive aspects addressed where applicable"
+      ],
+      "required": true
+    }
+  ],
+  "limits": {
+    "totalPages": null,
+    "subLimits": [
+      { "scope": "Part B1 — Part I (Extended Synopsis)", "pages": 5 },
+      { "scope": "Part B1 — CV + Track Record", "pages": 4 },
+      { "scope": "Part B2 — Part II (StG/CoG/AdG methodology)", "pages": 7 }
+    ],
+    "wordLimit": null,
+    "font": null,
+    "lineSpacing": null,
+    "perMechanism": {
+      "StG": { "partIPages": 5, "cvPages": 4, "partIIPages": 7, "budgetCeilingEur": 1500000, "durationMonths": 60 },
+      "CoG": { "partIPages": 5, "cvPages": 4, "partIIPages": 7, "budgetCeilingEur": 2000000, "durationMonths": 60 },
+      "AdG": { "partIPages": 5, "cvPages": 4, "partIIPages": 7, "budgetCeilingEur": 2500000, "durationMonths": 60 },
+      "SyG": { "partIPages": 5, "cvPages": 4, "partIIPages": 10 }
+    }
+  },
+  "reviewCriteria": [
+    "Research project: ground-breaking nature, ambition and feasibility (feasibility weighed at Step 2)",
+    "Principal Investigator: intellectual capacity, creativity and commitment",
+    "Excellence is the sole criterion — there is no separate impact or implementation pillar",
+    "Step 1 marks: A (passes to Step 2) / B (weaknesses, not retained) / C (significant weaknesses, rejected)",
+    "Step 2 marks: A (fundable if budget allows) / B (weaknesses preventing funding); the scientific proposal is scored while CV/Track Record receives qualitative feedback only",
+    "Panels rank on overall strengths/weaknesses, not arithmetic — weaknesses predict the outcome more than strengths; one fatal flaw sinks the proposal"
+  ],
+  "checklist": [
+    { "id": "synopsis-page-limit", "check": "Part B1 Part I (Extended Synopsis) is at most 5 pages.", "hard": true, "auto": true, "autoKind": "page-limit" },
+    { "id": "cv-page-limit", "check": "Part B1 CV + Track Record is at most ~4 pages.", "hard": true, "auto": true, "autoKind": "page-limit" },
+    { "id": "part-ii-page-limit", "check": "Part B2 Part II is at most 7 pages (10 for Synergy).", "hard": true, "auto": true, "autoKind": "page-limit" },
+    { "id": "required-sections-present", "check": "All required sections are present: Extended Synopsis, CV/Track Record, Methodology, Risk & Contingency, and Timeline/Gantt.", "hard": true, "auto": true, "autoKind": "required-sections" },
+    { "id": "citations-resolve", "check": "Every citation resolves to a real reference (DOI/PMID exists).", "hard": true, "auto": true, "autoKind": "citations-resolve" },
+    { "id": "official-templates", "check": "Uses the current-year official B1/B2 templates without rebuilding them.", "hard": true, "auto": false, "autoKind": null },
+    { "id": "right-scheme-eligibility", "check": "Correct scheme and eligibility window for the PI (incl. parental-leave / illness / victims-of-violence extensions where applicable).", "hard": true, "auto": false, "autoKind": null },
+    { "id": "no-science-in-appendices", "check": "No scientific content is hidden in the Funding ID or appendices to dodge the page limits.", "hard": true, "auto": false, "autoKind": null },
+    { "id": "groundbreaking-explicit", "check": "The proposal explicitly states what becomes possible / how the field changes if it succeeds — ground-breaking nature is substantiated, not merely asserted.", "hard": false, "auto": false, "autoKind": null },
+    { "id": "conceptual-not-operational-risk", "check": "The risk is conceptual (success genuinely uncertain even with unlimited resources), not operational; it is not a hypothesis-free 'fishing expedition'.", "hard": false, "auto": false, "autoKind": null },
+    { "id": "objectives-falsifiable", "check": "One crisp overarching goal/hypothesis broken into 3–4 coherent, measurable, falsifiable objectives — not a laundry list of loosely-linked aims.", "hard": false, "auto": false, "autoKind": null },
+    { "id": "gap-framing-current-global", "check": "State of the art defines the gap sharply, is current and global, and engages competing groups / likely reviewers fairly without overclaiming 'first ever'.", "hard": false, "auto": false, "autoKind": null },
+    { "id": "methods-mapped-to-objectives", "check": "In B2 every method is tied to a specific objective with objective→method→expected-outcome logic, and technique choices are justified.", "hard": false, "auto": false, "autoKind": null },
+    { "id": "preliminary-data-present", "check": "B2 includes preliminary / pilot data supporting feasibility.", "hard": false, "auto": false, "autoKind": null },
+    { "id": "risk-contingency-concrete", "check": "Each major risk states likelihood, impact and a concrete results-preserving fallback; the proposal does not claim 'no significant risks'.", "hard": false, "auto": false, "autoKind": null },
+    { "id": "gantt-with-gates", "check": "A realistic 60-month Gantt maps work packages, milestones, deliverables, dependencies and go/no-go decision gates (incl. hiring/lab-setup time).", "hard": false, "auto": false, "autoKind": null },
+    { "id": "cv-narrative-for-this-project", "check": "The CV is a narrative arguing independence and leadership for the career stage and capacity for THIS project — not an undifferentiated publication dump.", "hard": false, "auto": false, "autoKind": null },
+    { "id": "non-specialist-readable", "check": "Readable by the multidisciplinary panel majority: breakthrough front-loaded, acronyms defined, no jargon walls.", "hard": false, "auto": false, "autoKind": null },
+    { "id": "not-recycled", "check": "Not a recycled national or Horizon-collaborative proposal — the conceptual frame is ERC-specific.", "hard": false, "auto": false, "autoKind": null }
+  ],
+  "redFlags": [
+    "Interesting but incremental — could appear in a normal national grant rather than change the field",
+    "No testable hypothesis / 'we will collect data and see' → fishing expedition",
+    "Ambition claimed but never substantiated; no 'if successful, the field changes because…'",
+    "Methods imply the answer is already known → no real conceptual risk",
+    "'No significant risks foreseen' → reads as not ambitious enough",
+    "Overclaiming novelty a referee can disprove ('first ever…')",
+    "Objectives that don't map to methods that don't map to the timeline",
+    "CV is a publication dump; independence/leadership not evident for the career stage",
+    "Scientific content hidden in appendices / Funding ID to dodge page limits",
+    "Reads like a recycled Horizon or national proposal",
+    "Specialist-only prose the panel majority cannot follow"
+  ],
+  "requiredAttachments": [
+    "Cover page (title, synopsis, panel, keywords)",
+    "Part B1 — Extended Synopsis (≤5 pp)",
+    "Part B1 — Curriculum Vitae + Track Record (≤~4 pp)",
+    "Part B2 — Scientific Proposal / methodology (≤7 pp; 10 for Synergy)",
+    "Funding ID / appendices (no hidden scientific content)",
+    "Budget / resources justification (outside the page count)",
+    "Ethics & security self-assessment"
+  ],
+  "recencyNote": "Encodes ERC Work Programme 2026; only the current-year Work Programme, the Information for Applicants for the specific call, and the live B1/B2 templates are binding. Re-verify each cycle: budgets and page limits; that feasibility is assessed only at Step 2; the new AdG Step-2 interview; CV/Track Record giving qualitative feedback (not a score); eligibility windows and extensions (2027 plans: StG 0–10 yrs and CoG 5–15 yrs post-PhD, max one StG and one CoG per career); consolidated additional funding (up to €1M, or up to €2M for relocation); and outcome-dependent resubmission lock-outs."
+}

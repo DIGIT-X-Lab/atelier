@@ -77,6 +77,13 @@
     const texts = [...svgEl.querySelectorAll("text")].filter(t => t.textContent.trim());
     const fills = [...svgEl.querySelectorAll('path[fill]:not([fill="none"]), rect[fill]:not([fill="none"])')];
     const isMark = (el) => el && (el.tagName === "path" || el.tagName === "line" || el.tagName === "rect");
+    // Background hairlines (gridlines, axis domain/ticks) sit BEHIND labels by design — a label over a
+    // faint gridline is not a collision. Exclude them so real text-on-mark overlaps aren't masked.
+    const isBackground = (el) => {
+      const c = (el.getAttribute && el.getAttribute("class")) || "";
+      const pc = (el.parentElement && el.parentElement.getAttribute && el.parentElement.getAttribute("class")) || "";
+      return /(^|\s)(grid|ax-domain|ax-tick|tick)(\s|$)/.test(c) || /(^|\s)ax(\s|$)/.test(pc) || /\btick\b/.test(pc);
+    };
     const ancestors = (el) => { const s = new Set(); while (el) { s.add(el); el = el.parentElement; } return s; };
     const issues = [];
 
@@ -85,7 +92,7 @@
       const r = t.getBoundingClientRect();
       if (r.width === 0) continue;
       const own = ancestors(t);
-      const hit = (x, y) => document.elementsFromPoint(x, y).find(e => isMark(e) && !own.has(e));
+      const hit = (x, y) => document.elementsFromPoint(x, y).find(e => isMark(e) && !own.has(e) && !isBackground(e));
       let over = null, adj = null;
       const xs = [r.left + 1, (r.left + r.right) / 2, r.right - 1];
       const ys = [r.top + 1, (r.top + r.bottom) / 2, r.bottom - 1];

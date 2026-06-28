@@ -1,0 +1,348 @@
+{
+  "agency": "nih",
+  "label": "NIH — National Institutes of Health (investigator-initiated Research Project Grants)",
+  "version": "NIH Simplified Peer Review Framework, effective for due dates on/after 25 Jan 2025 (NOT-OD-24-010)",
+  "languages": ["en"],
+  "mechanisms": ["R01", "R21"],
+  "sections": [
+    {
+      "id": "specific-aims",
+      "title": "Specific Aims",
+      "purpose": "One page that sells the whole application; reviewers often score from here.",
+      "mustContain": [
+        "Hook / Significance opening (4-6 sentences): compelling, jargon-light first sentence; big problem -> what is known -> the specific gap",
+        "Knowledge gap + critical need + falsifiable central hypothesis (with the why, grounded in preliminary data/literature)",
+        "Long-term goal and the objective of this application",
+        "2-3 aims (rarely 4), each a bolded action title + 2-4 sentences giving working hypothesis, approach, and what the aim yields",
+        "Aims that are hypothesis-driven, distinct, and non-interdependent (Aim 1 failing must not sink Aims 2-3)",
+        "Payoff/Impact paragraph: expected outcomes, how they move the field, alignment with the assigned IC mission"
+      ],
+      "required": true
+    },
+    {
+      "id": "research-strategy-significance",
+      "title": "Research Strategy — Significance",
+      "purpose": "Establish why the work matters (feeds Factor 1).",
+      "mustContain": [
+        "Scientific premise: the prior work the proposal rests on, with honest strengths AND weaknesses",
+        "The problem/gap and why it is important",
+        "Expected contribution of the project",
+        "Tie to the assigned IC's mission"
+      ],
+      "required": true
+    },
+    {
+      "id": "research-strategy-innovation",
+      "title": "Research Strategy — Innovation",
+      "purpose": "State what is new or paradigm-shifting (feeds Factor 1).",
+      "mustContain": [
+        "Novel concept/model/method/intervention/application",
+        "Distinguish 'novel to the field' from 'new to me'",
+        "Avoid overclaiming incremental work as transformative"
+      ],
+      "required": true
+    },
+    {
+      "id": "research-strategy-approach",
+      "title": "Research Strategy — Approach",
+      "purpose": "The highest-stakes section (feeds Factor 2; strongest correlation with overall impact).",
+      "mustContain": [
+        "Organized by Specific Aim",
+        "Per aim: rationale/hypothesis -> experimental design -> methods -> expected outcomes -> interpretation of possible results",
+        "Potential problems, alternative approaches, and contingencies for each aim (mandatory)",
+        "Benchmarks/feasibility and a realistic timeline",
+        "Preliminary data supporting feasibility (effectively expected for R01)",
+        "Rigor: controls, sample size / power analysis / statistics, randomization/blinding"
+      ],
+      "required": true
+    },
+    {
+      "id": "authentication-of-key-resources",
+      "title": "Authentication of Key Biological and/or Chemical Resources",
+      "purpose": "Separate attachment (outside the page-limited Strategy) documenting authentication.",
+      "mustContain": [
+        "Methods to authenticate each key biological/chemical resource",
+        "Submitted as a separate attachment, not within the Research Strategy page limit"
+      ],
+      "required": true
+    },
+    {
+      "id": "biosketch",
+      "title": "Biosketch",
+      "purpose": "Per PI/senior personnel; supports Factor 3 (Expertise).",
+      "mustContain": [
+        "Personal Statement tailored to THIS project (address any gaps)",
+        "Positions/Honors",
+        "Contributions to Science (up to 5 short narratives, each with up to ~4 citations)",
+        "Research Support",
+        "Correct current format for the due date (legacy 5-page vs NIH Common Form per-section character limits)"
+      ],
+      "required": true
+    },
+    {
+      "id": "facilities-other-resources",
+      "title": "Facilities & Other Resources",
+      "purpose": "Show how the environment specifically enables this project (feeds Factor 3).",
+      "mustContain": [
+        "Project-specific description of facilities/environment, not boilerplate",
+        "Explicit link from resources to the proposed work"
+      ],
+      "required": true
+    },
+    {
+      "id": "equipment",
+      "title": "Equipment",
+      "purpose": "List equipment available for the project.",
+      "mustContain": [
+        "Equipment relevant to executing the aims"
+      ],
+      "required": true
+    },
+    {
+      "id": "budget-justification",
+      "title": "Budget & Justification",
+      "purpose": "Modular or detailed budget with narrative; an Additional Review Consideration (does not change score).",
+      "mustContain": [
+        "Modular (typical R01, <= $250K direct/yr in $25K modules) or detailed budget",
+        "Justification narrative consistent with the proposed work"
+      ],
+      "required": true
+    },
+    {
+      "id": "data-management-sharing-plan",
+      "title": "Data Management & Sharing (DMS) Plan",
+      "purpose": "Required when the project generates scientific data.",
+      "mustContain": [
+        "How data will be managed and shared (if generating data)"
+      ],
+      "required": false
+    },
+    {
+      "id": "other-plans",
+      "title": "Other Plans as Applicable",
+      "purpose": "Compliance and team attachments that apply to the specific project.",
+      "mustContain": [
+        "Human Subjects & Clinical Trials information",
+        "Inclusion (across the lifespan / sex/gender / race-ethnicity) where applicable",
+        "Vertebrate Animals Section (VAS) where applicable",
+        "Multiple-PI Leadership Plan (if multi-PI)",
+        "Letters of Support",
+        "Resource Sharing"
+      ],
+      "required": false
+    }
+  ],
+  "limits": {
+    "totalPages": null,
+    "subLimits": [
+      { "scope": "Specific Aims", "pages": 1 },
+      { "scope": "Research Strategy (R01)", "pages": 12 },
+      { "scope": "Research Strategy (R21)", "pages": 6 }
+    ],
+    "wordLimit": null,
+    "font": "Arial, Helvetica, Palatino Linotype, or Georgia >= 11pt; margins >= 0.5in",
+    "lineSpacing": "<= 6 lines per inch",
+    "perMechanism": {
+      "R01": {
+        "totalPages": null,
+        "specificAimsPages": 1,
+        "researchStrategyPages": 12,
+        "budgetDirectPerYear": 250000,
+        "moduleSize": 25000,
+        "durationYears": 5,
+        "preliminaryDataExpected": true,
+        "renewable": true
+      },
+      "R21": {
+        "totalPages": null,
+        "specificAimsPages": 1,
+        "researchStrategyPages": 6,
+        "budgetDirectTotal": 275000,
+        "budgetMaxSingleYear": 200000,
+        "durationYears": 2,
+        "preliminaryDataExpected": false,
+        "renewable": false
+      }
+    }
+  },
+  "reviewCriteria": [
+    "Factor 1 — Importance of the Research (absorbs Significance + Innovation; scored 1-9; 'Should it be done?')",
+    "Factor 2 — Rigor and Feasibility (absorbs Approach; scored 1-9; highest correlation with overall impact; 'Can it be done well?')",
+    "Factor 3 — Expertise and Resources (absorbs Investigator + Environment; binary appropriate vs additional-needed, comment only if a gap; 'Will it be done?')",
+    "Overall Impact Score: 1 (best) - 9 (worst) per reviewer -> averaged x10 -> 10-90 -> percentiled vs the IC-specific payline (~50% triaged / Not Discussed)",
+    "Additional Review Criteria (affect score where applicable): Protections for Human Subjects, Vertebrate Animals, Biohazards, Resubmission/Renewal/Revision",
+    "Additional Review Considerations (assessed, do not change score): budget/period, inclusion/authentication/resource-sharing"
+  ],
+  "checklist": [
+    {
+      "id": "specific-aims-one-page",
+      "check": "Specific Aims fits within one page.",
+      "hard": true,
+      "auto": true,
+      "autoKind": "page-limit"
+    },
+    {
+      "id": "research-strategy-page-limit",
+      "check": "Research Strategy is within the page limit (12 pages R01 / 6 pages R21).",
+      "hard": true,
+      "auto": true,
+      "autoKind": "page-limit"
+    },
+    {
+      "id": "required-sections-present",
+      "check": "All required sections present: Specific Aims, Significance, Innovation, Approach, and Authentication of Key Resources attachment.",
+      "hard": true,
+      "auto": true,
+      "autoKind": "required-sections"
+    },
+    {
+      "id": "authentication-attachment-present",
+      "check": "Authentication of Key Biological/Chemical Resources is submitted as a separate attachment (not inside the Research Strategy).",
+      "hard": true,
+      "auto": true,
+      "autoKind": "required-sections"
+    },
+    {
+      "id": "citations-resolve",
+      "check": "Every citation resolves to a real DOI/PMID.",
+      "hard": true,
+      "auto": true,
+      "autoKind": "citations-resolve"
+    },
+    {
+      "id": "aims-non-interdependent",
+      "check": "Aims are non-interdependent — if Aim 1 fails, Aims 2-3 still yield valuable results (no 'house of cards').",
+      "hard": true,
+      "auto": true,
+      "autoKind": "aim-interdependence"
+    },
+    {
+      "id": "aims-count",
+      "check": "There are 2-3 aims (rarely 4), each with a bolded action title.",
+      "hard": false,
+      "auto": false,
+      "autoKind": null
+    },
+    {
+      "id": "aims-hypothesis-driven",
+      "check": "Aims are hypothesis-driven, not merely descriptive ('characterize X') — no fishing expedition.",
+      "hard": true,
+      "auto": false,
+      "autoKind": null
+    },
+    {
+      "id": "central-hypothesis-stated",
+      "check": "A falsifiable central hypothesis plus the gap and critical need are clear by the end of paragraph 2 of Specific Aims.",
+      "hard": false,
+      "auto": false,
+      "autoKind": null
+    },
+    {
+      "id": "payoff-tied-to-ic-mission",
+      "check": "Payoff/Impact is explicit and tied to the assigned IC's mission.",
+      "hard": false,
+      "auto": false,
+      "autoKind": null
+    },
+    {
+      "id": "scientific-premise-balanced",
+      "check": "Significance states the scientific premise with honest strengths AND weaknesses.",
+      "hard": false,
+      "auto": false,
+      "autoKind": null
+    },
+    {
+      "id": "innovation-specific",
+      "check": "Innovation is specific and not overstated; incremental work is not dressed as transformative.",
+      "hard": false,
+      "auto": false,
+      "autoKind": null
+    },
+    {
+      "id": "approach-organized-by-aim",
+      "check": "Approach is organized by aim with design, methods, expected results, and interpretation of possible results.",
+      "hard": false,
+      "auto": false,
+      "autoKind": null
+    },
+    {
+      "id": "pitfalls-alternatives-present",
+      "check": "Potential problems, alternative approaches, and contingencies are present for each aim.",
+      "hard": true,
+      "auto": false,
+      "autoKind": null
+    },
+    {
+      "id": "preliminary-data-supports-feasibility",
+      "check": "Preliminary data supports feasibility (effectively required for R01; not required for R21).",
+      "hard": false,
+      "auto": false,
+      "autoKind": null
+    },
+    {
+      "id": "rigor-stats-and-controls",
+      "check": "Rigor elements present: power/sample-size justification, statistics, controls, randomization/blinding.",
+      "hard": false,
+      "auto": false,
+      "autoKind": null
+    },
+    {
+      "id": "sabv-addressed",
+      "check": "Sex As a Biological Variable (SABV) is addressed, or a strong single-sex justification is given.",
+      "hard": true,
+      "auto": false,
+      "autoKind": null
+    },
+    {
+      "id": "font-margins-compliant",
+      "check": "Font, font size, and margins meet NIH formatting rules (>= 11pt approved font, margins >= 0.5in).",
+      "hard": true,
+      "auto": false,
+      "autoKind": null
+    },
+    {
+      "id": "biosketch-format-current",
+      "check": "Biosketch uses the correct current format for the due date (legacy 5-page vs Common Form) with a personal statement tailored to this project.",
+      "hard": false,
+      "auto": false,
+      "autoKind": null
+    },
+    {
+      "id": "resubmission-introduction-responds",
+      "check": "For a resubmission, the Introduction responds point-by-point to the prior summary statement.",
+      "hard": false,
+      "auto": false,
+      "autoKind": null
+    }
+  ],
+  "redFlags": [
+    "Overly ambitious / not feasible in the time, budget, or team — the #1 Approach killer",
+    "Interdependent aims (a 'house of cards' where later aims depend on earlier results)",
+    "No or weak preliminary data",
+    "No pitfalls, alternatives, or contingency plans — reads as naive",
+    "Descriptive, not hypothesis-driven aims; a 'fishing expedition'",
+    "Thin scientific premise; overstated significance; incremental work dressed as innovative",
+    "Missing rigor elements — no power/sample-size, no controls, SABV not addressed, no authentication",
+    "Mismatch of team/environment to the project (now a Factor 3 binary flag)",
+    "Poor writing/organization — dense text, undefined jargon, unsupportive figures, typos, over-length",
+    "Lack of overall reviewer enthusiasm -> triage (Not Discussed)",
+    "Resubmissions that do not visibly respond to the prior summary statement"
+  ],
+  "requiredAttachments": [
+    "Specific Aims (1 page)",
+    "Research Strategy (12 pages R01 / 6 pages R21)",
+    "Authentication of Key Biological and/or Chemical Resources",
+    "Biosketch (per PI/senior personnel)",
+    "Facilities & Other Resources",
+    "Equipment",
+    "Budget & Justification (modular or detailed)",
+    "Data Management & Sharing (DMS) Plan (if generating data)",
+    "Human Subjects & Clinical Trials information (if applicable)",
+    "Inclusion attachments (if applicable)",
+    "Vertebrate Animals Section (if applicable)",
+    "Multiple-PI Leadership Plan (if multi-PI)",
+    "Letters of Support",
+    "Resource Sharing Plan"
+  ],
+  "recencyNote": "Verify per cycle: (1) the exact Biosketch format required for the due date (legacy 5-page vs NIH Common Form per-section character limits, currently in transition); (2) any post-2025 tweaks to the three-Factor Simplified Review Framework (current as of the 25 Jan 2025 rollout); (3) the IC-specific payline and whether the target IC accepts the Parent R21; (4) confirm all page limits, fonts, and current forms against the live NOFO/RFA."
+}
