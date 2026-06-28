@@ -1,0 +1,296 @@
+{
+  "agency": "dfg",
+  "label": "DFG Sachbeihilfe (Individual Research Grant / Research Grants Programme)",
+  "version": "DFG form 54.01 (06/26); reviews per form 10.20 (04/26)",
+  "languages": ["en", "de"],
+  "mechanisms": ["Sachbeihilfe (Einzelförderung / Research Grant)"],
+  "sections": [
+    {
+      "id": "A",
+      "title": "Part A – Proposal Data and Obligations",
+      "purpose": "Project metadata, participating persons, and legal obligations entered in the elan portal (not prose).",
+      "mustContain": [
+        "Project metadata and participating persons entered via elan (elan.dfg.de)",
+        "Summary of the project in BOTH German and English (German summary mandatory regardless of proposal language)",
+        "Legal obligations and declarations"
+      ],
+      "required": true
+    },
+    {
+      "id": "1",
+      "title": "Starting point – State of the art and preliminary work",
+      "purpose": "Position the project against the field, define the gap, and present preliminary work.",
+      "mustContain": [
+        "State of the art described briefly and precisely in DIRECT relationship to the project",
+        "Self-contained: understandable WITHOUT reading any cited literature (reviewers are not required to read citations)",
+        "Clear statement of the unique, innovative, promising contribution and the gap being closed",
+        "Status of own preliminary work, listed with date of publication; reference DFG funding period if DFG-funded",
+        "Clear attribution of whose work is referred to (failure can breach good research practice)"
+      ],
+      "required": true
+    },
+    {
+      "id": "2",
+      "title": "Objectives and work programme",
+      "purpose": "State the hypothesis-driven objectives and the detailed work programme, data handling, and diversity relevance.",
+      "mustContain": [
+        "2.1 Anticipated total duration (max initial funding usually 3 years, then renewal)",
+        "2.2 Objectives – concise, hypothesis-driven framing; clear hypotheses/objectives logically derived from the state of knowledge",
+        "2.3 Work programme incl. methods, per applicant; schedule of all planned experiments; tasks must correspond to funds requested; methods classified (available / to develop / external); alternative strategies and risk mitigation",
+        "2.4 Handling of research data – mandatory DMP per DFG checklist (characteristics/scope, documentation/quality, storage/archiving, legal, reuse/long-term access, responsibilities); if no relevant data, say so explicitly",
+        "2.5 Relevance of sex, gender and/or diversity – whether/how relevant to methods/work programme/objectives, or why genuinely not relevant"
+      ],
+      "required": true
+    },
+    {
+      "id": "3",
+      "title": "Project- and subject-related list of publications",
+      "purpose": "List only the works actually cited in sections 1–2.",
+      "mustContain": [
+        "Only works actually cited in sections 1–2 (no total limit)",
+        "Font ≥ Arial 9 pt (smaller font allowed only here)",
+        "Highlight (bold) a MAXIMUM of 10 of your own most project-relevant publications (cap stays 10 total even with multiple applicants)",
+        "Follow form 1.91 for publication lists"
+      ],
+      "required": true
+    },
+    {
+      "id": "4",
+      "title": "Supplementary information on the research context",
+      "purpose": "Ethical/legal aspects, employment, group composition, cooperations, equipment and other declarations (the ≤ 8-page block).",
+      "mustContain": [
+        "4.1 Ethical and/or legal aspects – risks/harm and mitigation; humans/human material/identifiable data (criteria, sample-size justification, risks, informed consent, ethics vote may be attached); animals (justify model, numbers + statistical design, 3Rs); Nagoya Protocol/ABS for foreign genetic resources; DURC + export control (KEF statement if required)",
+        "4.2 Employment status per applicant",
+        "4.3 First-time proposal data (optional self-declaration; career stage weighted favourably)",
+        "4.4 Composition of the project group (people not paid from project funds)",
+        "4.5 Cooperation in Germany",
+        "4.6 Cooperation abroad (signed letter of commitment attached)",
+        "4.7 Project-relevant collaborations over the past 3 years (conflict-of-interest)",
+        "4.8 Commercial enterprises (cooperation)",
+        "4.9 Participation in commercial enterprises",
+        "4.10 Scientific equipment",
+        "4.11 Other submissions",
+        "4.12 Other information",
+        "If a topic is central to the research question, discuss it in sections 1–2 and merely cross-reference here"
+      ],
+      "required": true
+    },
+    {
+      "id": "5",
+      "title": "Requested modules/funds",
+      "purpose": "Justify each requested item per applicant under the modular funding scheme.",
+      "mustContain": [
+        "Explain each item per applicant; funds must derive cogently from the work programme",
+        "Modular funding: Basic Module (direct project costs, project-specific staff, instrumentation) plus Temporary Positions for PIs, Replacement funding, Temporary Clinician Substitutes, Project-Specific Workshops, Mercator Fellows, Public Relations",
+        "Follow module guidelines (e.g. form 52.01); staff levels justified by task and proportional to knowledge gain"
+      ],
+      "required": true
+    },
+    {
+      "id": "C",
+      "title": "Part C – Attachments (CV and situational documents)",
+      "purpose": "Mandatory CV per applicant plus situational attachments.",
+      "mustContain": [
+        "One academic CV per applicant using form 53.200 (compulsory template)",
+        "CV publication list: Category A (mandatory, peer-reviewed articles/conference/anthology contributions/books) max 10; Category B (optional, preprints/datasets/software/patents) max 10 – need not relate to the project",
+        "Career interruptions may be disclosed so reviewers weight the record fairly",
+        "No bibliometrics: impact factors and h-indices not required and not to be considered (qualitative assessment)",
+        "Situational: ethics votes, host-institution statements, foreign-partner letters of commitment, acceptance letters for in-press papers"
+      ],
+      "required": true
+    }
+  ],
+  "limits": {
+    "totalPages": 25,
+    "subLimits": [
+      { "scope": "sections 1-3 (Project Description)", "pages": 17 },
+      { "scope": "sections 4 onward (Project Description)", "pages": 8 }
+    ],
+    "wordLimit": null,
+    "font": "Arial >= 11pt (publication list section 3: Arial >= 9pt)",
+    "lineSpacing": ">= 1.2",
+    "perMechanism": {
+      "Sachbeihilfe (Einzelförderung / Research Grant)": {
+        "totalPages": 25,
+        "sections1to3Pages": 17,
+        "sections4onwardPages": 8,
+        "highlightedOwnPublications": 10,
+        "cvCategoryAPublications": 10,
+        "cvCategoryBPublications": 10
+      }
+    }
+  },
+  "reviewCriteria": [
+    "Quality of the project",
+    "Objectives and work programme",
+    "Applicants' qualifications",
+    "Work and research environment",
+    "Scientific excellence, relevance and originality (weighed, considering individual career stage; no non-scientific criteria)"
+  ],
+  "checklist": [
+    {
+      "id": "total-page-limit",
+      "check": "Project Description is ≤ 25 pages total.",
+      "hard": true,
+      "auto": true,
+      "autoKind": "page-limit"
+    },
+    {
+      "id": "sections-1-3-page-limit",
+      "check": "Sections 1–3 occupy ≤ 17 pages (no borrowing from the section 4+ budget).",
+      "hard": true,
+      "auto": true,
+      "autoKind": "page-limit"
+    },
+    {
+      "id": "sections-4plus-page-limit",
+      "check": "Sections 4 onward occupy ≤ 8 pages (separate budget from sections 1–3).",
+      "hard": true,
+      "auto": true,
+      "autoKind": "page-limit"
+    },
+    {
+      "id": "formatting-font-spacing",
+      "check": "Body text is ≥ Arial 11 pt (publication list ≥ Arial 9 pt) and line spacing is ≥ 1.2.",
+      "hard": true,
+      "auto": false,
+      "autoKind": null
+    },
+    {
+      "id": "required-sections-present",
+      "check": "All required sections are present and numbered exactly (1, 2.1–2.5, 3, 4.1–4.12, 5).",
+      "hard": true,
+      "auto": true,
+      "autoKind": "required-sections"
+    },
+    {
+      "id": "section1-self-contained",
+      "check": "Section 1 is self-contained – the argument is understandable without reading any cited work.",
+      "hard": true,
+      "auto": false,
+      "autoKind": null
+    },
+    {
+      "id": "hypotheses-in-objectives",
+      "check": "Section 2.2 states clear, falsifiable hypotheses/objectives derived from section 1.",
+      "hard": true,
+      "auto": false,
+      "autoKind": null
+    },
+    {
+      "id": "aims-objectives-budget-chain",
+      "check": "Objectives, work programme, and budget form a coherent chain: every task maps to a requested funding item.",
+      "hard": true,
+      "auto": false,
+      "autoKind": null
+    },
+    {
+      "id": "work-programme-schedule-and-risk",
+      "check": "Section 2.3 has a concrete schedule of planned experiments, classified methods, and alternative strategies / risk mitigation.",
+      "hard": true,
+      "auto": false,
+      "autoKind": null
+    },
+    {
+      "id": "data-management-plan",
+      "check": "Section 2.4 contains a DMP per the DFG checklist, or explicitly states no relevant data is generated.",
+      "hard": true,
+      "auto": true,
+      "autoKind": "required-sections"
+    },
+    {
+      "id": "sex-gender-diversity",
+      "check": "Section 2.5 genuinely addresses sex/gender/diversity relevance (or states why not relevant).",
+      "hard": true,
+      "auto": true,
+      "autoKind": "required-sections"
+    },
+    {
+      "id": "citations-resolve",
+      "check": "Section 3 lists only works cited in sections 1–2 and every citation resolves to a real reference.",
+      "hard": true,
+      "auto": true,
+      "autoKind": "citations-resolve"
+    },
+    {
+      "id": "highlighted-pubs-cap",
+      "check": "At most 10 of the applicants' own publications are highlighted in section 3 (10 total even with multiple applicants).",
+      "hard": true,
+      "auto": false,
+      "autoKind": null
+    },
+    {
+      "id": "cv-form-53200",
+      "check": "One CV per applicant using form 53.200, with Category A ≤ 10 and Category B ≤ 10 publications.",
+      "hard": true,
+      "auto": false,
+      "autoKind": null
+    },
+    {
+      "id": "no-bibliometrics",
+      "check": "No impact factors or h-indices are used anywhere (assessment is qualitative).",
+      "hard": false,
+      "auto": false,
+      "autoKind": null
+    },
+    {
+      "id": "ai-disclosure",
+      "check": "If generative AI was used for text/images, its use is disclosed appropriately.",
+      "hard": false,
+      "auto": false,
+      "autoKind": null
+    },
+    {
+      "id": "bilingual-summary",
+      "check": "Part A includes a project summary in both German and English (German summary mandatory).",
+      "hard": true,
+      "auto": false,
+      "autoKind": null
+    },
+    {
+      "id": "ethics-section-4",
+      "check": "Section 4.1 covers applicable ethical/legal aspects (ethics vote, animal 3Rs, Nagoya/ABS, DURC/export) with attachments where required.",
+      "hard": false,
+      "auto": false,
+      "autoKind": null
+    },
+    {
+      "id": "budget-derived-from-work",
+      "check": "Section 5 funds are modular, justified per item, and proportional to knowledge gain.",
+      "hard": false,
+      "auto": false,
+      "autoKind": null
+    },
+    {
+      "id": "attachments-valid",
+      "check": "Each attachment PDF is < 10 MB, unlocked (readable/copyable/printable), and named per DFG protocol; the current elan template is used with formatting/numbering retained.",
+      "hard": true,
+      "auto": false,
+      "autoKind": null
+    }
+  ],
+  "redFlags": [
+    "Not self-contained – the argument only works if the reviewer reads the cited papers",
+    "Missing or wrong key references (own work or competitors')",
+    "Objectives ≠ work programme ≠ budget – the most common substantive weakness",
+    "No hypotheses / purely descriptive 'fishing expedition'",
+    "No risk management / no plan B / no alternative methods",
+    "Budget over-ask, or staff/co-applicants without a defined role",
+    "Over-ambition vs feasibility with thin preliminary work",
+    "Bibliometric padding (h-index, impact factors) – explicitly disregarded, signals rule-blindness",
+    "Self-plagiarism / unattributed reuse of others' work",
+    "Formatting violations (under-size font, over length, locked PDFs)",
+    "Empty mandatory sections (data handling; sex/gender/diversity; ethics)",
+    "Generative-AI text without disclosure"
+  ],
+  "requiredAttachments": [
+    "One academic CV per applicant (form 53.200, compulsory template) with Category A ≤ 10 and Category B ≤ 10 publications",
+    "Ethics-committee vote (if humans/human material/identifiable data are involved)",
+    "Signed letters of commitment from cooperation partners abroad (section 4.6)",
+    "Co-investigator declarations / conflict-of-interest disclosures",
+    "Acceptance letters for in-press publications cited as preliminary work",
+    "Host-institution statements where applicable",
+    "KEF statement for DURC/export-control-relevant projects (if required)"
+  ],
+  "recencyNote": "Built on form 54.01 v.06/26 and form 10.20 v.04/26. DFG revises forms roughly twice a year – always re-download the elan template per submission and verify the date code (e.g. '54.01 – 06/26'). Re-verify per cycle: page-split rules, the modular funding catalogue (form 52.01), the CV template (form 53.200), the '10 highlighted in proposal list' vs '10+10 CV' distinction, the AI-disclosure policy, and the mandatory data-management and sex/gender/diversity sections. Where German and English versions diverge, the German text legally takes precedence. Submission is via elan only, with no deadlines; only ~1 in 3 proposals can be funded."
+}

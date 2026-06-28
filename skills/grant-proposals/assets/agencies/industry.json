@@ -1,0 +1,290 @@
+{
+  "agency": "industry",
+  "label": "Industry & Foundation Short Awards (compute/cloud grants, research gifts, foundation short awards)",
+  "version": "Industry/foundation best-practices snapshot, mid-2026 (NVIDIA Academic Grant + Applied Research Accelerator, Google Cloud research credits, AWS Cloud Credit for Research, Microsoft Azure Research, CZI Community Fund, Wellcome short awards) — verify against the live CFP/RFA, which change quarterly",
+  "languages": ["en"],
+  "mechanisms": [
+    "NVIDIA Academic Grant Program",
+    "NVIDIA Applied Research Accelerator",
+    "Google Cloud research credits",
+    "AWS Cloud Credit for Research",
+    "Microsoft Azure Research Credits",
+    "CZI Community Fund",
+    "Wellcome short awards"
+  ],
+  "sections": [
+    {
+      "id": "1",
+      "title": "Problem / Motivation",
+      "purpose": "Establish the real-world problem and why it matters now, in plain language.",
+      "mustContain": [
+        "The real-world problem stated in 2-4 sentences",
+        "Why it matters now (the 'so-what'), intelligible to a non-specialist reviewer",
+        "No literature review or jargon-dense opening"
+      ],
+      "required": true
+    },
+    {
+      "id": "2",
+      "title": "Approach / What You'll Build",
+      "purpose": "State the methods and the concrete artifact you will produce.",
+      "mustContain": [
+        "The concrete artifact (tool, model, benchmark, pipeline, dataset, or demonstrable result)",
+        "Solution-oriented description, not a literature debate",
+        "A clear end state / finite deliverable"
+      ],
+      "required": true
+    },
+    {
+      "id": "3",
+      "title": "Why This Resource",
+      "purpose": "Explain what the funder's specific technology uniquely unlocks (the single most-overlooked requirement).",
+      "mustContain": [
+        "Name the specific GPUs / software / models / cloud services",
+        "Map each named resource to a concrete task",
+        "Explain what it uniquely unlocks (scale, speed, otherwise-unreachable capability)",
+        "For NVIDIA: reference specific pretrained models from ai.nvidia.com and named SDKs / software distributions",
+        "Not generic 'we need compute' that could go to any vendor"
+      ],
+      "required": true
+    },
+    {
+      "id": "4",
+      "title": "Feasibility / Preliminary Work",
+      "purpose": "Evidence the team can execute this scope in the award window.",
+      "mustContain": [
+        "Pilot results, prototype, or directly relevant prior publications",
+        "Right-sized scope matched to demonstrated capacity and stated resources",
+        "One piece of evidence per feasibility claim"
+      ],
+      "required": true
+    },
+    {
+      "id": "5",
+      "title": "Impact & Deliverables",
+      "purpose": "Specific, quantifiable outcomes plus a dissemination and sustainability path.",
+      "mustContain": [
+        "Specific, quantifiable outcomes (speedup, accuracy target, dataset size, users reached, cost)",
+        "Dissemination plan (open-source repo, dataset, paper, workshop)",
+        "Adoption / sustainability path beyond the award",
+        "For applied-track awards: name the commercial/government adopter and their commitment",
+        "No grandiose or sweeping claims"
+      ],
+      "required": true
+    },
+    {
+      "id": "6",
+      "title": "Team & Environment",
+      "purpose": "Briefly establish who is doing the work and why qualified.",
+      "mustContain": [
+        "Who, in 2-4 sentences",
+        "Why qualified",
+        "What infrastructure / support exists"
+      ],
+      "required": true
+    },
+    {
+      "id": "7",
+      "title": "Timeline / Milestones",
+      "purpose": "A few dated milestones mapped to the award window.",
+      "mustContain": [
+        "A few dated, verifiable milestones inside the award period",
+        "For NVIDIA: timeline aligned to GPU-hours dates and hardware ship dates",
+        "An end state, not a vague phase list"
+      ],
+      "required": true
+    },
+    {
+      "id": "8",
+      "title": "Budget / Resource Justification",
+      "purpose": "Tie the requested amount/credit to scope with a calculator-backed estimate.",
+      "mustContain": [
+        "The requested amount/credit tied to the scope",
+        "For AWS/Google: a pricing-calculator link/estimate substantiating the ask",
+        "Justification of chosen machine / GPU types vs. estimated usage",
+        "No round-max 'to be safe' ask; no admin/operational/IT-ops or general lab costs"
+      ],
+      "required": true
+    }
+  ],
+  "limits": {
+    "totalPages": 3,
+    "subLimits": [
+      { "scope": "Microsoft Azure research proposal", "pages": 3 },
+      { "scope": "Typical compute/cloud/foundation short award", "pages": 2 }
+    ],
+    "wordLimit": null,
+    "font": ">= 11pt (CZI and many foundations)",
+    "lineSpacing": null,
+    "perMechanism": {
+      "Microsoft Azure Research Credits": { "totalPages": 3 },
+      "NVIDIA Academic Grant Program": { "totalPages": null },
+      "Google Cloud research credits": { "totalPages": null },
+      "AWS Cloud Credit for Research": { "totalPages": null },
+      "CZI Community Fund": { "totalPages": null, "font": ">= 11pt", "margins": ">= 0.5 inch", "pageNumbers": "required" }
+    }
+  },
+  "reviewCriteria": [
+    "Concrete, finite deliverables with a clear end state",
+    "Feasibility over ambition — can this team finish this scope in the award window",
+    "Why THIS resource specifically — distinctive use of the funder's named technology/models/services",
+    "Alignment with the funder's mission / strategy / technology",
+    "Real-world / industry impact and dissemination (open-source release, adoption by a commercial/government partner)",
+    "A right-sized, justified ask backed by a pricing-calculator estimate"
+  ],
+  "checklist": [
+    {
+      "id": "within-page-limit",
+      "check": "Proposal is within the program's page/length limit (e.g. Azure <= 3 pages; most are 1-3 pages).",
+      "hard": true,
+      "auto": true,
+      "autoKind": "page-limit"
+    },
+    {
+      "id": "format-compliant",
+      "check": "Meets format rules where required: font >= 11pt, >= 0.5 inch margins, numbered pages (CZI/foundations).",
+      "hard": true,
+      "auto": true,
+      "autoKind": "page-limit"
+    },
+    {
+      "id": "required-sections-present",
+      "check": "All expected sections are present: problem, approach, why-this-resource, feasibility, impact/deliverables, team, timeline, budget.",
+      "hard": true,
+      "auto": true,
+      "autoKind": "required-sections"
+    },
+    {
+      "id": "opening-three-sentences",
+      "check": "Opening 2-3 sentences state problem + deliverable + impact in plain language.",
+      "hard": false,
+      "auto": false,
+      "autoKind": null
+    },
+    {
+      "id": "why-this-resource-named",
+      "check": "'Why this resource' names specific services/GPUs/models and what each uniquely unlocks (not a generic compute ask sendable to any vendor).",
+      "hard": true,
+      "auto": false,
+      "autoKind": null
+    },
+    {
+      "id": "nvidia-models-and-dataset",
+      "check": "For NVIDIA: references specific pretrained models / named SDKs and a clearly defined dataset.",
+      "hard": false,
+      "auto": false,
+      "autoKind": null
+    },
+    {
+      "id": "quantifiable-deliverables",
+      "check": "Deliverables and outcomes are concrete and quantifiable (speedup, accuracy, dataset size, users, GPU-hours, cost).",
+      "hard": true,
+      "auto": false,
+      "autoKind": null
+    },
+    {
+      "id": "feasibility-evidenced",
+      "check": "Feasibility is evidenced by pilot data, a prototype, or relevant publications, and scope fits the award window.",
+      "hard": true,
+      "auto": false,
+      "autoKind": null
+    },
+    {
+      "id": "milestones-dated-aligned",
+      "check": "Timeline has dated milestones aligned to the award / compute-hours / hardware-ship dates.",
+      "hard": false,
+      "auto": false,
+      "autoKind": null
+    },
+    {
+      "id": "ask-calculator-backed",
+      "check": "Budget/credit ask is right-sized and backed by a pricing-calculator estimate (AWS/Google) with justified machine/GPU types.",
+      "hard": true,
+      "auto": false,
+      "autoKind": null
+    },
+    {
+      "id": "no-excluded-work",
+      "check": "No excluded work: ongoing/established research, admin/operational/IT ops, or general lab running costs (explicit AWS exclusions).",
+      "hard": true,
+      "auto": false,
+      "autoKind": null
+    },
+    {
+      "id": "dissemination-and-sustainability",
+      "check": "Includes a dissemination plan (open-source, dataset, paper, workshop) and a post-award sustainability/adoption path.",
+      "hard": true,
+      "auto": false,
+      "autoKind": null
+    },
+    {
+      "id": "mission-alignment",
+      "check": "Clearly aligns with the funder's mission/strategy/technology and the correct program/track.",
+      "hard": true,
+      "auto": false,
+      "autoKind": null
+    },
+    {
+      "id": "criteria-in-cfp-order",
+      "check": "Every scoring criterion in the CFP is explicitly addressed, in the funder's order and terms.",
+      "hard": false,
+      "auto": false,
+      "autoKind": null
+    },
+    {
+      "id": "citations-resolve",
+      "check": "Every cited publication (feasibility/prior work) resolves to a real reference.",
+      "hard": true,
+      "auto": true,
+      "autoKind": "citations-resolve"
+    },
+    {
+      "id": "team-environment-stated",
+      "check": "Team/environment qualifications are stated briefly (who, why qualified, what support exists).",
+      "hard": false,
+      "auto": false,
+      "autoKind": null
+    },
+    {
+      "id": "no-grandiose-claims",
+      "check": "Active voice, jargon stripped from the opening, no grandiose/sweeping claims, proofread.",
+      "hard": false,
+      "auto": false,
+      "autoKind": null
+    },
+    {
+      "id": "reporting-and-acknowledgement",
+      "check": "Acknowledgement and reporting obligations noted (e.g. NVIDIA: acknowledge in publications, 6-month follow-up); any funder contacts named (AWS).",
+      "hard": false,
+      "auto": false,
+      "autoKind": null
+    },
+    {
+      "id": "eligibility-and-current-cfp",
+      "check": "Current CFP/RFA read and eligibility confirmed (e.g. NVIDIA: full-time faculty at a PhD-granting institution); submitted via correct portal before deadline.",
+      "hard": true,
+      "auto": false,
+      "autoKind": null
+    }
+  ],
+  "redFlags": [
+    "Generic resource justification — a paragraph that could be sent to any vendor; no reason it must be this funder's tech (for NVIDIA, no demonstrated understanding of their software/models)",
+    "No nameable artifact — reviewer can't tell what exactly exists at the end",
+    "No pilot/prototype/relevant publications — feasibility doubt; scope beyond the team's capacity",
+    "Round-max ask with no pricing-calculator backing — padded budget; cost exceeds plausible benefit",
+    "Off-strategy — does not advance the funder's mission/tech, or wrong program entirely",
+    "No dissemination/adopter — nothing open-sourced, no life after the credits run out",
+    "Grandiose claims, vague timelines, over length, requested-tech never named",
+    "Requests funding for excluded categories (ongoing/established research, admin/operational/IT ops, general lab costs)",
+    "Boilerplate copied from a federal (NIH/NSF) proposal — wrong altitude, too long, too theoretical"
+  ],
+  "requiredAttachments": [
+    "Pricing-calculator estimate/link substantiating the ask (AWS required; Google expected)",
+    "Clearly defined dataset description (NVIDIA)",
+    "Relevant publications / preliminary-results evidence",
+    "Timeline/milestones aligned to award and (NVIDIA) compute-hours and hardware-ship dates",
+    "Names of any funder contacts (AWS)",
+    "Submission via the program's official template/portal"
+  ],
+  "recencyNote": "Program tracks, award amounts, eligibility, page limits, and required forms change frequently — often quarterly (NVIDIA rotates tracks/GPU types each quarter; AWS exclusion list and Azure page cap can shift). Always read the live CFP/RFA before writing and confirm eligibility, the current scoring factors, the exact template/fields, the pricing-calculator requirement, and the deadline/portal."
+}
