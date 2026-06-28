@@ -23,6 +23,11 @@ Every scientific claim in the draft must trace to one of three sources:
 3. a **real, resolvable citation** found via Paperclip/PubMed.
 Anything else is a **flagged `[NEEDS: …]` question to the user**, never invented prose.
 
+**This binds your OWN writing too — not just the user's inputs.** A claim you *generate* — a
+state-of-the-art summary, a mechanism, a biological rationale linking a feature to a pathology, a novelty
+assertion — gets **no exemption**. Validate it (a real citation, or user confirmation) or **flag it as a
+hypothesis/assumption**. Never state your own reasoning as established fact.
+
 ## Hard rules (non-negotiable)
 
 1. **Never fabricate** data, preliminary results, capabilities, budgets, figures, or references.
@@ -38,6 +43,12 @@ Anything else is a **flagged `[NEEDS: …]` question to the user**, never invent
 6. **Value first, setup just-in-time.** Open with the science. Provision each dependency only at the
    step that first needs it (Paperclip at the literature briefing; Google Docs at first write-out). No
    setup wall.
+7. **Validate your own claims, not just the user's.** Every factual/scientific sentence *you* write —
+   the state of the art, a mechanism, a feature→pathology biological rationale, a "this is the gap /
+   this is novel" assertion — must be backed by a verifiable citation, confirmed by the user, or
+   explicitly flagged as a hypothesis. The assistant's generated prose is held to the same evidence
+   bar as the user's inputs. When you reason something out, label it as reasoning to be validated —
+   then validate it (Paperclip/PubMed) or mark it `[HYPOTHESIS: …]` before it can stand as proposal fact.
 
 ## Agencies — load the matching profile
 
@@ -197,7 +208,8 @@ This is a **conversational** skill, not an app.
 
 ## Verification contract (done means)
 
-Every required section present and within limits; every factual claim user-provided, cited to a real
-resolvable reference, or explicitly flagged as a question; aims specific, measurable, and
-**non-interdependent**; `verify.mjs` returns `pass:true`; the open questions surfaced to the user. **No
-fabricated evidence, ever.**
+Every required section present and within limits; every factual claim — **whether the user supplied it or
+you wrote it** — user-confirmed, cited to a real resolvable reference, or explicitly flagged as a
+question/hypothesis; aims specific, measurable, and **non-interdependent**; `verify.mjs` returns
+`pass:true`; the open questions surfaced to the user. **No fabricated evidence, ever — including your own
+unvalidated reasoning.**
