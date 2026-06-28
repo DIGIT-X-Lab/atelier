@@ -14,6 +14,9 @@
    `skills/` is a symlink to it. No manifest edits needed for skills.
 4. Test it: trigger it from a real task and confirm Claude follows it. For discipline skills, see the
    `superpowers:writing-skills` methodology (baseline test → write → close loopholes).
+5. **Update the README (standing rule).** Adding a skill is not done until you revisit `README.md` and
+   update **both** the repo's concept/positioning *and* the **Skills** table (add a row with a status).
+   The repo's framing should always match what's actually in it.
 
 ## Add a chart recipe (research-visuals)
 
