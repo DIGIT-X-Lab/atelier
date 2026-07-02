@@ -1,0 +1,23 @@
+{
+  "mode": "author",
+  "workType": "manuscript",
+  "standardsApplied": ["claim"],
+  "findings": [
+    { "id": "F1", "severity": "fatal", "lens": "rigor",
+      "location": "Methods, p.6, §2.3",
+      "problem": "The reported 0.94 AUC is computed on the same 200 scans used to tune the threshold; there is no held-out test set.",
+      "why": "Threshold tuning on the evaluation data leaks label information and inflates AUC; the headline result is not trustworthy.",
+      "fix": "Report AUC on a pre-registered external or temporally split test set never seen during tuning; move the current number to 'internal validation'." },
+    { "id": "F2", "severity": "minor", "lens": "clarity",
+      "location": "Figure 3",
+      "problem": "Figure 3 y-axis has no units.",
+      "why": "Readers cannot interpret the effect magnitude.",
+      "fix": "Label the y-axis 'Dice coefficient (0-1)'." },
+    { "id": "F3", "severity": "major", "lens": "integrity",
+      "location": "Discussion, p.11",
+      "problem": "Claims 'first to show X' but Zhang 2023 reported the same finding.",
+      "why": "Overstated novelty; misattributes priority.",
+      "fix": "Soften to 'among the first' and cite Zhang 2023.",
+      "evidence": "Zhang et al. 2023, Radiology, doi:10.1148/xyz reports the same X in their Table 2." }
+  ]
+}

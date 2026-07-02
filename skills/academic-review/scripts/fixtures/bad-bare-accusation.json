@@ -1,0 +1,14 @@
+{
+  "mode": "reviewer",
+  "workType": "manuscript",
+  "standardsApplied": [],
+  "recommendation": "reject",
+  "recommendationRationale": "The novelty claim appears to misattribute prior work.",
+  "pointsToAuthors": ["See major point 1 regarding the citation."],
+  "findings": [
+    { "id": "F1", "severity": "major", "lens": "integrity",
+      "location": "Discussion, p.11",
+      "problem": "The claim of being 'first to show X' is false; this was already published.",
+      "why": "Misattributes priority and overstates novelty." }
+  ]
+}

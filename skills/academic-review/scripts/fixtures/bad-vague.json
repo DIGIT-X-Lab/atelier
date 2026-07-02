@@ -1,0 +1,12 @@
+{
+  "mode": "author",
+  "workType": "manuscript",
+  "standardsApplied": [],
+  "findings": [
+    { "id": "F1", "severity": "major", "lens": "clarity",
+      "location": "Section 4",
+      "problem": "This section is weak.",
+      "why": "It is not good.",
+      "fix": "Rewrite it." }
+  ]
+}

@@ -9,13 +9,14 @@ it once and every lab member gets the same capabilities; improve a skill and eve
 ## Why this repo exists
 
 Research work is full of high-stakes tasks that are easy to do *adequately* and hard to do *well and
-consistently* — a publication figure, a concept diagram, a grant proposal. Done ad hoc, every person
-(and every paper, every application) comes out different and quality drifts. ATELIER captures the lab's
-way of doing these things as skills, so the output is **reproducible, on-brand, and submission-grade by
-default** — not dependent on who happened to make it.
+consistently* — a publication figure, a concept diagram, a grant proposal, a peer review. Done ad hoc,
+every person (and every paper, every application) comes out different and quality drifts. ATELIER captures
+the lab's way of doing these things as skills, so the output is **reproducible, on-brand, and
+submission-grade by default** — not dependent on who happened to make it.
 
-It started with research *visuals* and is growing into a broader **research toolkit** — anything worth
-codifying so the whole lab does it the right way every time (next up: grant proposals).
+It started with research *visuals* and is growing into a broader **research toolkit** — for both
+**building** research writing (visuals, grant proposals) and **stress-testing** it (reviewing papers and
+theses) — anything worth codifying so the whole lab does it the right way every time.
 
 ## What's a "skill"?
 
@@ -30,6 +31,7 @@ lab's skills.
 |---|---|---|
 | **`research-visuals`** | ✅ available | A design assistant for reproducible, journal-grade visuals. You choose a colour palette (from Sanzo Wada's *A Dictionary of Color Combinations*) and fonts **once**; it locks them to a `theme.json` and every figure, diagram, and slide inherits that look. Four families: **figures** (D3.js → SVG/PDF, *never matplotlib*), **imaging** (niivue NIfTI/DICOM renders), **concepts** (HTML5 Canvas + Phosphor icons), and **slides** (reveal.js). It recommends the *right* chart for your data, previews live in the browser, and runs an automated craft gate so nothing ships cluttered or overlapping. |
 | **`grant-proposals`** | ✅ available | A grant-writing assistant for **DFG · ERC/Horizon · NIH · industry** funders. It works from *your* real science (it never fabricates) — interviews you, ingests your call/RFA + papers, grounds every claim in real literature via **Paperclip**, **pressure-tests the idea before you write a word** (is it actually novel/fundable?), drafts to the agency's best practices, machine-checks limits + citations, and writes it into **Google Docs** with figures + a Gantt from `research-visuals`. Concierge setup walks anyone through it. |
+| **`academic-review`** | ✅ available | A reviewing assistant for **theses, papers, and any academic work** — the critique/improve counterpart to `grant-proposals`. Two inferred modes (get tough pre-submission feedback on *your* draft, or produce a submittable **peer-review referee report** on someone else's), four review lenses (rigor · clarity · integrity · literature), reporting-guideline packs (CLAIM/TRIPOD-AI/STROBE/CONSORT/STARD/PRISMA/ARRIVE), an opt-in adversarial **deep-panel**, and a machine gate that holds the *review itself* to a located-and-evidence-anchored bar. |
 
 ## Install
 

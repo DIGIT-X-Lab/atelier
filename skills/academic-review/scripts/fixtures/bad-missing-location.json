@@ -1,0 +1,12 @@
+{
+  "mode": "author",
+  "workType": "manuscript",
+  "standardsApplied": ["claim"],
+  "findings": [
+    { "id": "F1", "severity": "fatal", "lens": "rigor",
+      "location": "",
+      "problem": "The reported 0.94 AUC is computed on the same 200 scans used to tune the threshold; there is no held-out test set.",
+      "why": "Threshold tuning on the evaluation data leaks label information and inflates AUC; the headline result is not trustworthy.",
+      "fix": "Report AUC on a pre-registered external or temporally split test set never seen during tuning." }
+  ]
+}
