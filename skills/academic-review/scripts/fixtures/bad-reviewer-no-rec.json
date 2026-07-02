@@ -1,0 +1,11 @@
+{
+  "mode": "reviewer",
+  "workType": "manuscript",
+  "standardsApplied": [],
+  "findings": [
+    { "id": "F1", "severity": "major", "lens": "rigor",
+      "location": "Methods, §2.1",
+      "problem": "No external validation is reported for a model claimed to be clinically deployable.",
+      "why": "Internal performance does not demonstrate generalization; the deployment claim outruns the evidence." }
+  ]
+}
